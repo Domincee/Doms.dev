@@ -1,0 +1,222 @@
+.projects-section {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+}
+
+.projects-carousel {
+  max-width: 1000px;
+  width: 100%;
+  position: relative;
+}
+
+.carousel-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.carousel-header h2 {
+  font-size: 42px;
+  font-weight: 700;
+  color: #111;
+  margin-bottom: 10px;
+}
+
+.carousel-header p {
+  font-size: 18px;
+  color: #666;
+}
+
+.carousel-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.carousel-track {
+  display: flex;
+  transition: transform 0.5s ease;
+}
+
+.project-card {
+  padding: 0 10px;
+  box-sizing: border-box;
+  flex-shrink: 0;
+}
+
+.project-card-inner {
+  background: white;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+  cursor: pointer;
+  transition: all 0.4s ease;
+}
+
+.project-card-inner:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 60px rgba(167, 121, 247, 0.2);
+}
+
+.project-card-image {
+  width: 100%;
+  height: 350px;
+  background: linear-gradient(135deg, rgba(167, 121, 247, 0.1), rgba(167, 121, 247, 0.05));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+}
+
+.project-card-image::before {
+  content: '📸';
+  font-size: 64px;
+  opacity: 0.3;
+}
+
+.project-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.project-card-content {
+  padding: 30px;
+}
+
+.project-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 15px;
+}
+
+.project-card-content h3 {
+  font-size: 26px;
+  font-weight: 700;
+  color: #111;
+  margin-bottom: 10px;
+}
+
+.project-card-content p {
+  font-size: 16px;
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.project-tag {
+  padding: 6px 12px;
+  background: rgba(167, 121, 247, 0.1);
+  color: #a779f7;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+/* Carousel Controls */
+.carousel-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.carousel-arrow {
+  background: white;
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 20px;
+  color: #111;
+}
+
+.carousel-arrow:hover:not(:disabled) {
+  background: #a779f7;
+  color: white;
+  border-color: #a779f7;
+  transform: scale(1.1);
+}
+
+.carousel-arrow:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.carousel-indicators {
+  display: flex;
+  gap: 10px;
+}
+
+.carousel-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.2);
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0;
+}
+
+.carousel-dot.active {
+  background: #a779f7;
+  width: 30px;
+  border-radius: 6px;
+}
+
+.carousel-dot:hover {
+  background: #a779f7;
+  opacity: 0.7;
+}
+
+@media (max-width: 768px) {
+  .projects-section {
+    padding: 30px 20px;
+  }
+
+  .carousel-header h2 {
+    font-size: 32px;
+  }
+
+  .carousel-header p {
+    font-size: 16px;
+  }
+
+  .project-card-image {
+    height: 250px;
+  }
+
+  .project-card-content {
+    padding: 25px 20px;
+  }
+
+  .project-card-content h3 {
+    font-size: 22px;
+  }
+
+  .carousel-arrow {
+    width: 45px;
+    height: 45px;
+    font-size: 18px;
+  }
+}

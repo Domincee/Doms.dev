@@ -1,0 +1,163 @@
+/* Import Poppins font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+/* Global reset and base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  font-family: 'Poppins', sans-serif;
+  background: #ffffff;
+  color: #111;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header - Fixed height */
+header {
+  z-index: 100;
+  height: 70px;
+  flex-shrink: 0;
+}
+
+/* Main content - Takes remaining space */
+main {
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Sections container - Fills main */
+.sections {
+  position: relative;
+  width: 100%;
+  height: calc(100vh - 70px - 60px);
+  overflow: hidden;
+}
+
+/* Individual sections - Stack on top of each other */
+.section {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.8s ease, transform 0.8s ease;
+  opacity: 0;
+  transform: translateY(100px);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.section.active {
+  opacity: 1;
+  transform: translateY(0) !important;
+  z-index: 1;
+  pointer-events: auto;
+}
+
+/* Footer */
+footer {
+  flex-shrink: 0;
+  background: transparent;
+  z-index: 200;
+  height: auto;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  color: #666;
+}
+
+/* Utility classes */
+.accent-color {
+  color: #a779f7;
+}
+
+.button-primary {
+  background: #a779f7;
+  color: white;
+  border: none;
+  padding: 12px 28px;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: 'Poppins', sans-serif;
+}
+
+.button-primary:hover {
+  background: #9567e6;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(167, 121, 247, 0.3);
+}
+
+.button-secondary {
+  background: transparent;
+  color: #a779f7;
+  border: 2px solid #a779f7;
+  padding: 10px 26px;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: 'Poppins', sans-serif;
+}
+
+.button-secondary:hover {
+  background: #a779f7;
+  color: white;
+  transform: translateY(-2px);
+}
+
+/* Status badges */
+.status-badge {
+  display: inline-block;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.status-badge.completed {
+  background: rgba(46, 204, 113, 0.15);
+  color: #2ecc71;
+}
+
+.status-badge.ongoing {
+  background: rgba(52, 152, 219, 0.15);
+  color: #3498db;
+}
+
+.status-badge.maintenance {
+  background: rgba(231, 76, 60, 0.15);
+  color: #e74c3c;
+}
+
+/* Tool badges */
+.tool-badge {
+  display: inline-block;
+  padding: 6px 14px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  background: rgba(167, 121, 247, 0.1);
+  color: #a779f7;
+  margin: 4px;
+}
