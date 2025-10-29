@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import '../styles/ProjectDetail.css';
+/* import '../styles/layout.css'; */
 
 const ProjectDetailPanel = ({ project, isOpen, onClose }) => {
   useEffect(() => {
@@ -18,6 +19,12 @@ const ProjectDetailPanel = ({ project, isOpen, onClose }) => {
     };
   }, [isOpen, onClose]);
 
+  // prevent background scroll / section swapping when modal is open
+  const preventScroll = (e) => {
+    e.stopPropagation();
+    e.preventDefault();
+  };
+
   if (!project) return null;
 
   const handleLinkClick = (url) => {
@@ -27,9 +34,11 @@ const ProjectDetailPanel = ({ project, isOpen, onClose }) => {
   };
 
   return (
-    <div 
+    <div
       className={`project-detail-overlay ${isOpen ? 'open' : ''}`}
       onClick={(e) => e.target.classList.contains('project-detail-overlay') && onClose()}
+      onWheel={preventScroll}
+      onTouchMove={preventScroll}
     >
       <div className="project-detail-panel">
         <button className="project-detail-close" onClick={onClose} aria-label="Close">

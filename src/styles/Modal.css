@@ -263,9 +263,18 @@
     flex-direction: column;
     padding: 20px;
   }
+ .timeline-image {
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  width: 220px;
+  height: 220px;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+  opacity: 0.4; /* lowered for subtle visibility */
+  filter: brightness(0.8) blur(1px); /* softens the image */
+  pointer-events: none; /* ensures it doesn’t block clicks */
+}
 
-  .timeline-image {
-    flex: 0 0 60px;
-    height: 60px;
-  }
+
 }

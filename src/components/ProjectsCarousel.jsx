@@ -3,6 +3,7 @@ import ProjectCard from './ProjectCard';
 import ProjectDetailPanel from './ProjectDetailPanel';
 import projects from '../data/projectsData';
 import '../styles/Projects.css';
+/* import '../styles/layout.css'; */
 
 const ProjectsCarousel = () => {
   const [currentIndex, setCurrentIndex] = useState(0);

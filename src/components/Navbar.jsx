@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import '../styles/Navbar.css';
+/* import '../styles/layout.css'; */
 
 const Navbar = ({ activeSection, onNavigate }) => {
   const [isOpen, setIsOpen] = useState(false);

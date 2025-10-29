@@ -1,9 +1,13 @@
+import bananaLeafHero from '../assets/bg-images/bananaLeaf.svg';
+import myGoal from '../assets/bg-images/myGoal.svg';
+import howIsIt from '../assets/bg-images/howIsIt.svg';
+
 const projects = [
   {
     id: 'project-1',
     title: 'Task Manager Pro',
     shortDescription: 'A modern task management application',
-    image: '/assets/images/project-placeholder-1.jpg',
+    image: bananaLeafHero,
     status: 'completed',
     tags: ['React', 'Vite', 'CSS'],
     tools: ['React', 'Vite', 'Plain CSS'],
@@ -16,7 +20,7 @@ const projects = [
     id: 'project-2',
     title: 'Weather Dashboard',
     shortDescription: 'Real-time weather tracking application',
-    image: '/assets/images/project-placeholder-2.jpg',
+    image: myGoal,
     status: 'ongoing',
     tags: ['React', 'API', 'CSS'],
     tools: ['React', 'Weather API', 'CSS'],
@@ -29,7 +33,7 @@ const projects = [
     id: 'project-3',
     title: 'Portfolio Template',
     shortDescription: 'Customizable developer portfolio',
-    image: '/assets/images/project-placeholder-3.jpg',
+    image: howIsIt,
     status: 'maintenance',
     tags: ['React', 'Vite', 'Responsive'],
     tools: ['React', 'Vite', 'CSS', 'GitHub Pages'],
@@ -42,7 +46,7 @@ const projects = [
     id: 'project-4',
     title: 'E-Commerce Platform',
     shortDescription: 'Modern online shopping experience',
-    image: '/assets/images/project-placeholder-4.jpg',
+    image: howIsIt,
     status: 'completed',
     tags: ['React', 'Redux', 'API'],
     tools: ['React', 'Redux', 'REST API', 'Stripe'],

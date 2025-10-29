@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import AboutModal from './AboutModal';
 import '../styles/About.css';
+/* import '../styles/layout.css'; */
+import profileImage from '../assets/bg-images/aboutProfie.png';
 
 const AboutSection = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -12,7 +14,7 @@ const AboutSection = () => {
       <div className="about-section">
         <div className="about-container">
           <div className="about-image">
-            <img src="/assets/images/profile-placeholder.jpg" alt="Profile" />
+            <img src={profileImage} alt="Profile" />
           </div>
           
           <div className="about-content">
@@ -21,7 +23,6 @@ const AboutSection = () => {
             <p className="about-bio">
               I'm a passionate developer with expertise in creating modern, responsive web applications. 
               I love turning complex problems into simple, beautiful, and intuitive designs. 
-              When I'm not coding, you'll find me exploring new technologies and contributing to open-source projects.
             </p>
             
             <div className="about-skills-preview">

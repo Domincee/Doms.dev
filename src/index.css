@@ -8,6 +8,12 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
+  /* layout helpers: set these in your layout if you have fixed nav/footer */
+  /* Navbar height defined in Navbar.css is 70px — keep this in sync */
+  --nav-height: 70px;
+  /* Footer height conservative default; adjust if your footer is different */
+  --footer-height: 90px;
+
     --background: 0 0% 100%;
     --foreground: 222.2 84% 4.9%;
 

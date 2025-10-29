@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
 import '../styles/Modal.css';
+import logoUMTCs from '../assets/bg-images/logoUMTC.svg';
+import frontEnd from '../assets/bg-images/frontEnd.png';
 
 const AboutModal = ({ isOpen, onClose }) => {
   const [activeTab, setActiveTab] = useState('skills');
@@ -31,30 +33,40 @@ const AboutModal = ({ isOpen, onClose }) => {
     { icon: '⚡', name: 'Performance', description: 'Optimized code' }
   ];
 
-  const education = [
-    {
-      year: '2020 - 2024',
-      school: 'University Name',
-      degree: 'Bachelor of Computer Science',
-      description: 'Specialized in web development and software engineering. Graduated with honors.',
-      image: '/assets/images/education-placeholder.jpg'
-    }
-  ];
+const education = [
+  {
+    year: '2022 - present',
+    school: 'University of Mindanao Tagum College',
+    degree: 'Bachelor of Science in Information Technology',
+    description: 'Focused on web development, programming, and software engineering. Gained hands-on experience through academic projects and continuous self-learning.',
+    image: logoUMTCs
+  }
+];
 
-  const experience = [
-    {
-      year: '2023 - Present',
-      company: 'Tech Company',
-      position: 'Frontend Developer',
-      description: 'Building modern web applications using React and TypeScript. Led multiple successful projects.',
-      image: '/assets/images/work-placeholder.jpg'
-    }
-  ];
+
+const experience = [
+  {
+    year: '2023 - Present',
+    company: 'Personal Learning & Projects',
+    position: 'Aspiring Full-Stack Developer',
+    description: 'Building and experimenting with personal web projects while continuously improving development skills. Adapting to modern frameworks and tools such as React, Vite, and Node.js, with a focus on clean design, scalability, and performance.',
+    image: frontEnd
+  }
+];
+
+
+  // Prevent scroll/touchmove/wheel on overlay
+  const preventScroll = (e) => {
+    e.stopPropagation();
+    e.preventDefault();
+  };
 
   return (
-    <div 
+    <div
       className={`modal-overlay ${isOpen ? 'open' : ''}`}
       onClick={(e) => e.target.classList.contains('modal-overlay') && onClose()}
+      onWheel={preventScroll}
+      onTouchMove={preventScroll}
     >
       <div className="modal-content">
         <div className="modal-header">

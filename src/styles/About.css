@@ -1,28 +1,52 @@
 .about-section {
   width: 100%;
-  height: 100%;
+  min-height: calc(100vh - 140px); /* Adjust based on navbar and footer height */
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 40px;
+  margin-top: 20px;
 }
 
 .about-container {
   max-width: 1200px;
   width: 100%;
   display: flex;
-  gap: 60px;
-  align-items: center;
+  gap: 15px;
+  align-items: flex-start;
+  padding: 20px 0;
 }
 
 .about-image {
   flex: 0 0 350px;
   height: 350px;
-  border-radius: 20px;
+  padding: 8px;
+  border-radius: 100%;
   overflow: hidden;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
-}
+  box-shadow:
+    0 10px 20px rgba(0, 139, 139, 0.18),
+    0 6px 6px rgba(0, 139, 139, 0.12),
+    0 0 54px 4px rgba(244, 39, 244, 0.578);
 
+  background: #fff;
+  transition: all 0.4s ease-in-out;
+}
+.about-image img{
+  transition: all 0.4s ease-in-out;
+
+}
+.about-image img:hover {
+  transform: scale(1.08);
+  box-shadow: 
+    0 15px 30px rgba(0, 139, 139, 0.3),
+    0 10px 10px rgba(0, 139, 139, 0.2),
+      0 0 54px rgba(128, 0, 128, 0.2);
+}
+.about-image:hover {
+  box-shadow: 
+    0 15px 30px rgba(0, 139, 139, 0.3),
+    0 10px 10px rgba(0, 139, 139, 0.2),
+      0 0 54px rgba(128, 0, 128, 0.2);
+}
 .about-image img {
   width: 100%;
   height: 100%;
@@ -33,26 +57,31 @@
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 0;
 }
 
 .about-content h2 {
   font-size: 42px;
   font-weight: 700;
-  color: #111;
+  color: #222;
   margin-bottom: 10px;
+  background: linear-gradient(90deg, #008B8B, #800080);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.08);
 }
 
 .about-tagline {
   font-size: 20px;
-  color: #a779f7;
+  color: #008B8B;
   font-weight: 600;
   margin-bottom: 10px;
 }
 
 .about-bio {
   font-size: 16px;
-  color: #666;
+  color: #333;
   line-height: 1.7;
   margin-bottom: 20px;
 }
@@ -68,17 +97,18 @@
   width: 48px;
   height: 48px;
   border-radius: 10px;
-  background: rgba(167, 121, 247, 0.1);
+  background: rgba(0, 139, 139, 0.08);
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 24px;
+  color: #008B8B;
   transition: all 0.3s ease;
 }
 
 .skill-icon:hover {
   transform: translateY(-5px);
-  background: rgba(167, 121, 247, 0.2);
+  background: rgba(0, 139, 139, 0.18);
 }
 
 .about-buttons {
@@ -87,45 +117,237 @@
   margin-top: 10px;
 }
 
-@media (max-width: 1024px) {
-  .about-container {
-    flex-direction: column;
-    gap: 40px;
+
+/* IMG */
+ .about-image {
+    flex: 0 0 350px;
+    height: 350px;
+    padding: 8px;
+    border-radius: 100%;
   }
 
-  .about-image {
-    flex: 0 0 280px;
-    height: 280px;
+  /* OVERLAY MODAL */
+  .modal-content{
+    max-height:90%;;
   }
 
-  .about-content h2 {
-    font-size: 36px;
+  .skills-grid{
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
   }
-}
 
-@media (max-width: 768px) {
+
+  @media (max-width: 1024px) {
   .about-section {
+    min-height: calc(100vh - 120px);
     padding: 30px 20px;
   }
 
+  .about-container {
+    flex-direction: column;
+    gap: 30px;
+    align-items: center;
+    text-align: center;
+  }
+
   .about-image {
-    flex: 0 0 220px;
-    height: 220px;
+    flex: 0 0 320px;
+    height: 260px;
+    padding: 8px;
+    border-radius: 100%;
+    overflow: hidden;
+    box-shadow:
+      0 10px 20px rgba(0, 139, 139, 0.18),
+      0 6px 6px rgba(0, 139, 139, 0.12),
+      0 0 0 2px rgba(128, 0, 128, 0.10);
+    background: #fff;
+  }
+
+  .about-content {
+    align-items: center;
   }
 
   .about-content h2 {
     font-size: 32px;
   }
 
+  .about-skills-preview {
+    justify-content: center;
+  }
+  .skills-grid{
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  }
+
+    .modal-body{
+    padding: 15px;
+  }
+  .skill-item{
+    padding: 14px;
+  }
+  .skill-item-icon{
+    font-size: 1.7rem;
+  }
+    .skill-item h4{
+    font-size: 1rem;
+  }
+    .skill-item p{
+    font-size: 0.6rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .about-section {
+    min-height: calc(100vh - 100px);
+    padding: 20px 15px;
+    margin: 15px 0;
+  }
+
+  .about-image {
+    flex: 0 0 280px;
+    height: 200px;
+    padding: 8px;
+    border-radius: 100%;
+    overflow: hidden;
+    box-shadow:
+      0 10px 20px rgba(0, 139, 139, 0.18),
+      0 6px 6px rgba(0, 139, 139, 0.12),
+      0 0 0 2px rgba(128, 0, 128, 0.10);
+    background: #fff;
+  }
+
+  .about-content h2 {
+    font-size: 28px;
+  }
+
   .about-tagline {
-    font-size: 18px;
+    font-size: 16px;
+  }
+
+  .about-bio {
+    font-size: 14px;
+    line-height: 1.6;
   }
 
   .about-buttons {
     flex-direction: column;
+    width: 80%;
+    gap: 10px;
   }
 
   .about-buttons button {
     width: 100%;
+    padding: 10px 15px;
+    font-size: 14px;
+  }
+
+  .skill-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 525px) {
+  .about-section {
+    min-height: calc(100vh - 90px);
+    padding: 15px 10px;
+    margin: 10px 0;
+  }
+
+  .about-content {
+  
+    gap:0;
+  }
+  .about-container {
+    gap: 20px;
+  }
+
+  .about-image {
+    flex: 0 0 180px;
+    height: 180px;
+    padding: 8px;
+    border-radius: 100%;
+    overflow: hidden;
+    box-shadow:
+      0 10px 20px rgba(0, 139, 139, 0.18),
+      0 6px 6px rgba(0, 139, 139, 0.12),
+      0 0 0 2px rgba(128, 0, 128, 0.10);
+    background: #fff;
+  }
+
+
+  .about-content h2 {
+    font-size: 18px;
+    margin: 0;
+  }
+
+  .about-tagline {
+    font-size: 12px;
+  }
+
+  .about-bio {
+    font-size: 10px;
+    line-height: 1.5;
+  }
+
+  .about-buttons {
+    margin-bottom: 20px; /* Add space before footer */
+  }
+  .skills-grid{
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 5px;
+  }
+  .modal-body{
+    padding: 12px;
+  }
+  .skill-item{
+    padding: 12px;
+  }
+  .skill-item-icon{
+    font-size: 1.5rem;
+  }
+    .skill-item h4{
+    font-size: 0.8rem;
+  }
+    .skill-item p{
+    font-size: 0.6rem;
+  }
+}
+
+@media (max-width: 320px) {
+  .about-section {
+    min-height: calc(100vh - 80px);
+    padding: 10px 8px;
+  }
+
+  .about-image {
+    flex: 0 0 150px;
+    height: 150px;
+    padding: 8px;
+    border-radius: 100%;
+    overflow: hidden;
+    box-shadow:
+      0 10px 20px rgba(0, 139, 139, 0.18),
+      0 6px 6px rgba(0, 139, 139, 0.12),
+      0 0 0 2px rgba(128, 0, 128, 0.10);
+    background: #fff;
+  }
+
+  .about-content h2 {
+    font-size: 20px;
+  }
+
+  .about-tagline {
+    font-size: 13px;
+  }
+
+  .about-bio {
+    font-size: 12px;
+    line-height: 1.4;
+  }
+
+  .skill-icon {
+    width: 32px;
+    height: 32px;
+    font-size: 16px;
   }
 }

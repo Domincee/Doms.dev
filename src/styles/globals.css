@@ -71,14 +71,14 @@ main {
 /* Footer */
 footer {
   flex-shrink: 0;
-  background: transparent;
   z-index: 200;
   height: auto;
-  padding: 10px 20px;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 10px;
+  padding: 13px 25px;
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
   color: #666;
 }
 
