@@ -2,7 +2,12 @@ import React, { useEffect } from "react";  // ✅ Add useEffect import
 import '../styles/Hero.css';
 import profileImg from '../assets/bg-images/noBG_prof.png';
 
-const HeroSection = () => {
+const HeroSection = ({ setActiveSection  }) => {
+
+   const handleClick = (e) => {
+    e.preventDefault();
+    setActiveSection('projects');
+  };
   // ✅ Move useEffect INSIDE the component
  useEffect(() => {
   function getShuffledDirections() {
@@ -64,6 +69,7 @@ const HeroSection = () => {
 }, []);
 
 
+
   return (
     <section className="hero-section">
       <div className="hero-content">
@@ -90,10 +96,8 @@ const HeroSection = () => {
 
               </span>
             </h2>
-        <a href="#portfolio" className="btn">
-          View My Work
-        </a>
-         
+
+        <a href="#portfolio" className="btn" onClick={handleClick}>View My Work</a>;
       </div>
 
       <div className="hero-profile">

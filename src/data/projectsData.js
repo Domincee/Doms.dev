@@ -13,6 +13,7 @@ const images1 = Object.values(project1Images).map((mod) => {
   return mod?.default || mod;
 });
 
+console.log(images1); 
 const projects = [
   {
     id: 'project-1',

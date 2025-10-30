@@ -75,7 +75,6 @@ const ProjectDetailPanel = ({ project, isOpen, onClose }) => {
   // prevent background scroll / section swapping when modal is open
   const preventScroll = (e) => {
     e.stopPropagation();
-    e.preventDefault();
   };
 
   if (!project) return null;

@@ -17,8 +17,8 @@
 }
 
 .about-image {
-  flex: 0 0 350px;
-  height: 350px;
+  flex: 0 0 340px;
+  height: 340px;
   padding: 8px;
   border-radius: 100%;
   overflow: hidden;
@@ -27,20 +27,21 @@
     0 6px 6px rgba(0, 139, 139, 0.12),
     0 0 54px 4px rgba(244, 39, 244, 0.578);
 
-  background: #fff;
   transition: all 0.4s ease-in-out;
 }
-.about-image img{
-  transition: all 0.4s ease-in-out;
+.about-image img {
+  cursor: pointer;
+}
+
+.about-image img:hover {
+  transform: scale(1.1) !important;
+  transition-duration: 50ms !important;
+  transition-delay: 0.2s !important;
+  transition: transform 0.4s ease-in-out !important;
+
 
 }
-.about-image img:hover {
-  transform: scale(1.2);
-  box-shadow: 
-    0 15px 30px rgba(0, 139, 139, 0.3),
-    0 10px 10px rgba(0, 139, 139, 0.2),
-      0 0 54px rgba(128, 0, 128, 0.2);
-}
+
 .about-image:hover {
   box-shadow: 
     0 15px 30px rgba(0, 139, 139, 0.3),
@@ -120,8 +121,8 @@
 
 /* IMG */
  .about-image {
-    flex: 0 0 350px;
-    height: 350px;
+    flex: 0 0 320px;
+    height: 320px;
     padding: 8px;
     border-radius: 100%;
   }
@@ -383,7 +384,7 @@
   opacity: 0;
   transform: translateY(28px);
   transition-property: opacity, transform;
-  transition-duration: 600ms;
+  transition-duration: 400ms;
   transition-timing-function: cubic-bezier(.2,.9,.2,1);
   will-change: opacity, transform;
   pointer-events: none; /* avoid accidental clicks while hidden */

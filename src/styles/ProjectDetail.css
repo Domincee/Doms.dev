@@ -569,3 +569,38 @@ These animations create a smooth sliding effect when navigating between images.
     padding:0;
   }
 }
+
+/* Status badge base */
+.status-badge {
+  transition: all 0.5s;
+  animation: glow 2s infinite;
+  /* default fallback colors */
+  --glow-start: #fff;
+  --glow-end: #000;
+}
+
+/* Status-specific colors */
+.status-badge.completed {
+  --glow-start: #9bc377;
+  --glow-end: #84b845;
+}
+
+.status-badge.ongoing {
+  --glow-start: #57bcff;
+  --glow-end: #056fb5;
+}
+
+.status-badge.maintenance {
+  --glow-start: #ff7171;
+  --glow-end: #ff0000;
+}
+
+/* Single keyframe animation */
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 0 8px 2px var(--glow-start);
+  }
+  50% {
+    box-shadow: 0 0 16px 4px var(--glow-end);
+  }
+}

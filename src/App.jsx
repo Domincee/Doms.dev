@@ -6,6 +6,10 @@ import ProjectsCarousel from './components/ProjectsCarousel';
 import ContactSection from './components/ContactSection';
 import Footer from './components/Footer';
 import { getScrollSensitivity } from './utils/scrollConfig';
+
+
+
+
 import './styles/globals.css';
 
 function App() {
@@ -28,6 +32,8 @@ function App() {
       setIsScrolling(false);
     }, 800); // Match transition duration
   };
+
+  
 
   const navigateToNextSection = () => {
     const currentIndex = sections.indexOf(activeSection);
@@ -101,9 +107,9 @@ function App() {
       
       <main>
         <div className="sections">
-          <section className={`section hero ${activeSection === 'hero' ? 'active' : ''}`}>
-            <HeroPlaceholder />
-          </section>
+           <section className={`section hero ${activeSection === 'hero' ? 'active' : ''}`}>
+            <HeroPlaceholder setActiveSection={setActiveSection} />
+         </section>
 
           <section className={`section about  ${activeSection === 'about' ? 'active' : ''}`}>
             <AboutSection />
