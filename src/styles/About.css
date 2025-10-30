@@ -374,3 +374,66 @@
   }
 }
 
+/* about - initial hidden state for exact elements */
+.section.about .about-content h2,
+.section.about .about-image img,
+.section.about .about-content .about-tagline,
+.section.about .about-content .about-bio,
+.section.about .about-content .about-buttons {
+  opacity: 0;
+  transform: translateY(28px);
+  transition-property: opacity, transform;
+  transition-duration: 600ms;
+  transition-timing-function: cubic-bezier(.2,.9,.2,1);
+  will-change: opacity, transform;
+  pointer-events: none; /* avoid accidental clicks while hidden */
+}
+
+/* When section is active — reveal with staggered delays */
+.section.about.active .about-content h2 {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.12s;
+  pointer-events: auto;
+}
+
+.section.about.active .about-image img {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.28s;
+  pointer-events: auto;
+}
+
+.section.about.active .about-content .about-tagline {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.46s;
+  pointer-events: auto;
+}
+
+.section.about.active .about-content .about-bio {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.64s;
+  pointer-events: auto;
+}
+
+.section.about.active .about-content .about-buttons {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.82s;
+  pointer-events: auto;
+}
+
+/* Optional: small scale on appear for more punch */
+.section.about.active .about-content h2,
+.section.about.active .about-image img {
+  transform: translateY(0) scale(1);
+}
+
+/* Fallback: if something else forces opacity, increase specificity or add !important */
+/* only use !important as last resort */
+/*
+.section.about .about-content h2 { opacity:0 !important; transform: translateY(28px) !important; }
+.section.about.active .about-content h2 { opacity:1 !important; transform: translateY(0) !important; }
+*/

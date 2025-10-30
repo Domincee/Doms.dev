@@ -309,3 +309,34 @@
     margin-bottom: max(calc(var(--footer-height, 100px) + 40px + env(safe-area-inset-bottom)), 6vh);
   }
 }
+
+
+/* ---------- Projects Section Reveal Animation ---------- */
+
+/* Initial hidden state */
+.projects-section .carousel-header,
+.projects-section .carousel-container,
+.projects-section .carousel-controls {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+/* When section is active, fade and slide up */
+.section.projects.active .projects-section .carousel-header {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.1s;
+}
+
+.section.projects.active .projects-section .carousel-container {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.4s;
+}
+
+.section.projects.active .projects-section .carousel-controls {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.7s;
+}

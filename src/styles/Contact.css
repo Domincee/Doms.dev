@@ -318,3 +318,34 @@
 .contact-section.active .contact-form {
   animation: contactFadeInUp 0.6s cubic-bezier(0.4,0,0.2,1) 0.3s both;
 }
+
+
+/* ---------- Contact Section Animation ---------- */
+
+/* Initial state: hidden and slightly lowered */
+.contact-section .contact-header,
+.contact-section .contact-form,
+.contact-section .contact-social {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+/* Active state (when section is visible) */
+.section.contact.active .contact-section .contact-header {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.1s;
+}
+
+.section.contact.active .contact-section .contact-form {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.4s;
+}
+
+.section.contact.active .contact-section .contact-social {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.7s;
+}
