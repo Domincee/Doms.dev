@@ -38,7 +38,7 @@ const AboutSection = () => {
                 View Details
               </button>
               <button className="button-secondary">
-                Download Resume
+                Download CV
               </button>
             </div>
           </div>

@@ -121,7 +121,7 @@
     backdrop-filter: blur(10px);
     flex-direction: column;
     gap: 0;
-    padding: 20px 0;
+    padding: 20px 12px;
     transform: translateY(-100%);
     opacity: 0;
     transition: all 0.4s ease;
@@ -136,7 +136,7 @@
   }
 
   .navbar-links a {
-    padding: 15px 40px;
+    padding: 15px 70px;
     width: 100%;
     text-align: left;
   }
@@ -146,3 +146,16 @@
     background: rgba(167, 121, 247, 0.05);
   }
 }
+@media (max-width: 480px) {
+    .navbar-logo{
+      font-size: 1rem;
+    }
+      .navbar-links {
+        top: 50px;
+      }
+      
+     .navbar-links a {
+    padding: 15px 40px;
+ 
+  }
+  }

@@ -1,23 +1,76 @@
-import { useEffect } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import '../styles/ProjectDetail.css';
 /* import '../styles/layout.css'; */
 
+
 const ProjectDetailPanel = ({ project, isOpen, onClose }) => {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [direction, setDirection] = useState(null);
+  const touchStartX = useRef(null);
+  const touchEndX = useRef(null);
+  const minSwipeDistance = 50;
+
+  const handleNext = () => {
+    setDirection('next');
+    setCurrentImageIndex((prevIndex) => 
+      prevIndex === project.images?.length - 1 ? 0 : prevIndex + 1
+    );
+  };
+
+  const handlePrev = () => {
+    setDirection('prev');
+    setCurrentImageIndex((prevIndex) => 
+      prevIndex === 0 ? (project.images?.length || 1) - 1 : prevIndex - 1
+    );
+  };
+
+  const handleTouchStart = (e) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchMove = (e) => {
+    touchEndX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = () => {
+    if (!touchStartX.current || !touchEndX.current) return;
+
+    const swipeDistance = touchEndX.current - touchStartX.current;
+    if (Math.abs(swipeDistance) > minSwipeDistance) {
+      if (swipeDistance > 0) {
+        handlePrev();
+      } else {
+        handleNext();
+      }
+    }
+
+    touchStartX.current = null;
+    touchEndX.current = null;
+  };
+
+  const handleDotClick = (index) => {
+    setCurrentImageIndex(index);
+  };
+
   useEffect(() => {
-    const handleEscape = (e) => {
+    const handleKeyDown = (e) => {
       if (e.key === 'Escape') onClose();
+      if (project?.images?.length > 1) {
+        if (e.key === 'ArrowLeft') handlePrev();
+        if (e.key === 'ArrowRight') handleNext();
+      }
     };
 
     if (isOpen) {
-      document.addEventListener('keydown', handleEscape);
+      document.addEventListener('keydown', handleKeyDown);
       document.body.style.overflow = 'hidden';
     }
 
     return () => {
-      document.removeEventListener('keydown', handleEscape);
+      document.removeEventListener('keydown', handleKeyDown);
       document.body.style.overflow = 'unset';
     };
-  }, [isOpen, onClose]);
+  }, [isOpen, onClose, project, handleNext, handlePrev]);
 
   // prevent background scroll / section swapping when modal is open
   const preventScroll = (e) => {
@@ -46,7 +99,60 @@ const ProjectDetailPanel = ({ project, isOpen, onClose }) => {
         </button>
 
         <div className="project-detail-image">
-          {project.image && <img src={project.image} alt={project.title} />}
+          {project.images && project.images.length > 0 && (
+            <div
+              onTouchStart={handleTouchStart}
+              onTouchMove={handleTouchMove}
+              onTouchEnd={handleTouchEnd}
+              className="image-container"
+            >
+              <img 
+                className={`detail-image ${
+                  direction === 'next' ? 'sliding-next-in' :
+                  direction === 'prev' ? 'sliding-prev-in' : ''
+                }`}
+                src={project.images[currentImageIndex]} 
+                alt={`${project.title} image ${currentImageIndex + 1}`}
+                onAnimationEnd={() => setDirection(null)} 
+              />
+
+              {project.images.length > 1 && (
+                <>
+                  <button 
+                    className="image-nav prev" 
+                    onClick={handlePrev}
+                    aria-label="Previous image"
+                  >
+                    ‹
+                  </button>
+                  <button 
+                    className="image-nav next" 
+                    onClick={handleNext}
+                    aria-label="Next image"
+                  >
+                    ›
+                  </button>
+                  
+                  <div className="image-navigation">
+                    <div className="image-counter">
+                      {currentImageIndex + 1}/{project.images.length}
+                    </div>
+                    
+                    <div className="image-indicators">
+                      {project.images.map((_, index) => (
+                        <button
+                          key={index}
+                          className={`image-dot ${index === currentImageIndex ? 'active' : ''}`}
+                          onClick={() => handleDotClick(index)}
+                          aria-label={`Go to image ${index + 1}`}
+                        />
+                      ))}
+                    </div>
+                  </div>
+                </>
+              )}
+            </div>
+          )}
         </div>
 
         <div className="project-detail-content">

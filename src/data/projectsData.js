@@ -2,12 +2,25 @@ import bananaLeafHero from '../assets/bg-images/bananaLeaf.svg';
 import myGoal from '../assets/bg-images/myGoal.svg';
 import howIsIt from '../assets/bg-images/howIsIt.svg';
 
+
+const project1Images = import.meta.glob(
+  '../assets/project-imgs/project1/*.{png,jpg,jpeg,webp}',
+  { eager: true }
+);
+
+// Extract valid URLs regardless of how Vite wraps them
+const images1 = Object.values(project1Images).map((mod) => {
+  return mod?.default || mod;
+});
+
 const projects = [
   {
     id: 'project-1',
     title: 'Task Manager Pro',
     shortDescription: 'A modern task management application',
     image: bananaLeafHero,
+    images: images1,
+    totalImages: images1.length,
     status: 'completed',
     tags: ['React', 'Vite', 'CSS'],
     tools: ['React', 'Vite', 'Plain CSS'],

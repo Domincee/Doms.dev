@@ -7,6 +7,7 @@
   align-items: center;
   padding: 2rem;
   gap: 3rem;
+
 }
 
 /* === HERO CONTENT === */
@@ -92,9 +93,9 @@
   border: 3px solid rgba(0, 139, 139, 0.3);
   backdrop-filter: blur(10px);
   box-shadow: 
-    0 10px 20px rgba(0, 139, 139, 0.2),
-    0 6px 6px rgba(0, 139, 139, 0.1),
-    0 0 54px 4px rgba(244, 39, 244, 0.578);
+    0 10px 10px rgba(0, 139, 139, 0.2),
+    0 6px 6px rgba(75, 145, 145, 0.1),
+    0 0 24px 4px rgba(244, 39, 244, 0.578);
   transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
@@ -198,7 +199,7 @@
   }
 
   .hero-profile img {
-    width: 320px;
+    width: 280px;
   }
 
   .btn {
@@ -217,57 +218,59 @@
   }
 
 }
-
 /* === SMALL MOBILE: Below 480px === */
 @media (max-width: 480px) {
-  .hero-section {
-    padding: 0.75rem;
-    gap: 1rem;
-  }
-
-  .hero-content h1 {
-    font-size: 1.4rem;
-  }
-
-  .hero-content p:last-of-type {
-    font-size: 0.85rem;
-    line-height: 1.5;
-  }
-
-  .hero-profile img {
-    width: 65vw;
-  }
-
-  .btn {
-    font-size: 0.85rem;
-    padding: 0.5rem 1.2rem;
-  }
-
-      .roles span {
-        font-size: 1rem;
+      .hero-section {
+        padding: 0.75rem;
+        gap: 1rem;
       }
 
-      .name-box span b{
-      font-size: 2rem;
+      .hero-content h1 {
+        font-size: 1.4rem;
+      }
 
-    }
+      .hero-content p:last-of-type {
+        font-size: 0.85rem;
+        line-height: 1.5;
+      }
 
-    .name-box span strong{
-      position: absolute;
-    }
+      .hero-profile img {
+        width: 220px;
+      }
+
+      .btn {
+        font-size: 0.85rem;
+        padding: 0.5rem 1.2rem;
+      }
+
+        .roles span {
+          font-size: 1rem;
+        }
+
+        .name-box span b{
+        font-size: 2rem;
+
+      }
+
+      .name-box span strong{
+        position: absolute;
+      }
 
 
-    .name-box h1{
-      font-size: 6vw;
-    }
-
+      .name-box h1{
+        font-size: 6vw;
+      }
+  }
  
-}
+
 
 @media (max-width: 320px) {
- .hero-section {
-    padding: 0rem;
-    gap: 0.2rem;
+  header {
+    height: 40px;
+  }
+  
+  .sections{
+    height: calc(100vh - 20px - 40px);
   }
 
   .hero-content h1 {
@@ -278,7 +281,9 @@
     font-size: 0.7rem;
     line-height: 1;
   }
-
+ .hero-profile{
+  margin: 0;
+ }
   .hero-profile img {
     width: 140px;
   }
@@ -352,4 +357,8 @@
   z-index: 20;
   opacity: 1;
   animation: none;
+}
+
+.section.hero.active .hero-content span h1{
+  font-size: 5rem;
 }

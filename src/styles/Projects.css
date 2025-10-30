@@ -57,6 +57,7 @@
   margin: 0 auto;
   max-width: 1200px;
   flex: 1;
+  padding: 5px;
 }
 
 .carousel-track {
@@ -222,10 +223,19 @@
 
 @media screen and (max-height: 800px) {
   .projects-section {
-    padding-top: max(calc(var(--nav-height, 200px) + 32px), 8vh);
-    padding-bottom: max(calc(var(--footer-height, 80px) + 32px + env(safe-area-inset-bottom)), 10vh);
+    padding-top: max(calc(var(--nav-height, 210px) + 32px), 8vh);
+    padding-bottom: max(calc(var(--footer-height, 100px) + 32px + env(safe-area-inset-bottom)), 10vh);
   }
-
+  .carousel-header h2{
+    font-size: 1.2rem;
+  }
+   .carousel-header{
+    margin: 0;
+   }
+    .carousel-header p{
+    font-size: 0.9rem;
+  }
+ 
   .project-card {
     padding: 0 25px;
     flex-shrink: 1;
@@ -236,5 +246,66 @@
   }
   .project-card-image {
     height: 220px;
+  }
+
+  .carousel-controls .carousel-arrow{
+    width: 34px;
+    height: 34px;
+  }
+  .carousel-controls{
+    margin-bottom: max(calc(var(--footer-height, 100px) + 40px + env(safe-area-inset-bottom)), 6vh);
+  }
+}
+
+
+
+@media screen and (max-width: 480px) {
+  .project-card-content{
+    gap: 0;
+    padding: 8px;
+  }
+  .project-card-header h3{
+    font-size: 1.2rem;
+    
+  }
+    .project-card-content p{
+    font-size: 0.8rem;
+    
+  }
+}
+
+@media screen and (max-height: 600px) {
+    .projects-section {
+    padding-top: max(calc(var(--nav-height, 220px) + 32px), 8vh);
+    padding-bottom: max(calc(var(--footer-height, 100px) + 32px + env(safe-area-inset-bottom)), 10vh);
+  }
+  .carousel-header h2{
+    font-size: 1.2rem;
+  }
+   .carousel-header{
+    margin: 0;
+   }
+    .carousel-header p{
+    font-size: 0.9rem;
+  }
+ 
+  .project-card {
+    padding: 0 25px;
+    flex-shrink: 1;
+  }
+  .project-card-inner {
+    width: 100%;
+    height: 210px;
+  }
+  .project-card-image {
+    height: 100px;
+  }
+
+  .carousel-controls .carousel-arrow{
+    width: 34px;
+    height: 34px;
+  }
+  .carousel-controls{
+    margin-bottom: max(calc(var(--footer-height, 100px) + 40px + env(safe-area-inset-bottom)), 6vh);
   }
 }

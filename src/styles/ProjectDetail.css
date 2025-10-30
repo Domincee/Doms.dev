@@ -101,19 +101,126 @@
   position: relative;
 }
 
-.project-detail-image::before {
-  content: '🖼️';
-  font-size: 80px;
-  opacity: 0.3;
-}
-
-.project-detail-image img {
+.image-container {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Navigation buttons */
+.image-nav {
   position: absolute;
-  top: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.3);
+  color: white;
+  border: none;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  transition: all 0.3s ease;
+  opacity: 0;
+  z-index: 10;
+}
+
+.project-detail-image:hover .image-nav {
+  opacity: 1;
+}
+
+.image-nav:hover {
+  background: rgba(0, 0, 0, 0.6);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.image-nav.prev {
+  left: 20px;
+}
+
+.image-nav.next {
+  right: 20px;
+}
+
+/* Image counter and indicators */
+.image-navigation {
+  position: absolute;
+  bottom: 20px;
   left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  z-index: 10;
+}
+
+.image-counter {
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.image-indicators {
+  display: flex;
+  gap: 8px;
+}
+
+.image-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.image-dot.active {
+  background: white;
+  transform: scale(1.2);
+}
+
+.images-wrapper {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.detail-image {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.detail-image.active {
+  opacity: 1;
+  transform: translateX(0);
+  z-index: 2;
+}
+
+.detail-image.prev {
+  opacity: 0;
+  transform: translateX(-100%);
+  z-index: 1;
+}
+
+.detail-image.next {
+  opacity: 0;
+  transform: translateX(100%);
+  z-index: 1;
 }
 
 .project-detail-content {
@@ -212,7 +319,7 @@
 
 @media (max-width: 768px) {
   .project-detail-overlay {
-    padding: 20px 10px;
+    padding: 0 10px;
   }
 
   .project-detail-image {
@@ -220,7 +327,7 @@
   }
 
   .project-detail-content {
-    padding: 30px 25px;
+    padding: 0 25px;
   }
 
   .project-detail-header {
@@ -242,5 +349,223 @@
   .status-legend {
     flex-direction: column;
     gap: 12px;
+  }
+}
+
+/* Animations */
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+    backdrop-filter: blur(0);
+  }
+  to {
+    opacity: 1;
+    backdrop-filter: blur(8px);
+  }
+}
+
+@keyframes modalSlideIn {
+  from {
+    transform: translateY(50px) scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes imageSlideIn {
+  from {
+    transform: translateX(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes buttonPop {
+  0% {
+    transform: translateY(-50%) scale(0);
+    opacity: 0;
+  }
+  60% {
+    transform: translateY(-50%) scale(1.2);
+  }
+  100% {
+    transform: translateY(-50%) scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes contentFadeUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Apply animations */
+.project-detail-overlay.open {
+  animation: modalFadeIn 0.4s ease forwards;
+}
+
+.project-detail-overlay.open .project-detail-panel {
+  animation: modalSlideIn 0.5s cubic-bezier(0.2, 0.9, 0.3, 1.1) forwards;
+}
+
+.detail-image {
+  animation: imageSlideIn 0.6s ease-out forwards;
+}
+
+.image-nav {
+  opacity: 0;
+  animation: buttonPop 0.4s ease-out 0.3s forwards;
+}
+
+.project-detail-content > * {
+  opacity: 0;
+  animation: contentFadeUp 0.5s ease-out forwards;
+}
+
+.project-detail-header {
+  animation-delay: 0.2s;
+}
+
+.project-detail-section:nth-child(1) {
+  animation-delay: 0.3s;
+}
+
+.project-detail-section:nth-child(2) {
+  animation-delay: 0.4s;
+}
+
+.project-detail-section:nth-child(3) {
+  animation-delay: 0.5s;
+}
+
+.project-actions {
+  animation-delay: 0.6s;
+}
+
+.status-legend {
+  animation-delay: 0.7s;
+}
+
+/* Hover animations */
+.image-nav {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.image-nav:hover {
+  background: rgba(0, 0, 0, 0.7);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.project-detail-close {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.project-detail-close:hover {
+  transform: rotate(90deg) scale(1.1);
+  background: #a779f7;
+  color: white;
+}
+
+.image-dot {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.image-dot:hover {
+  transform: scale(1.2);
+  background: rgba(255, 255, 255, 0.8);
+}
+
+/* Image transition */
+.detail-image {
+  transition: opacity 0.3s ease, transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Smooth reveal for navigation on hover */
+.project-detail-image:hover .image-nav {
+  opacity: 1;
+  transform: translateY(-50%) scale(1);
+}
+
+/* Image Slide Animations for Next/Prev Navigation
+------------------------------------------------
+These animations create a smooth sliding effect when navigating between images.
+- slideOutLeft: Current image slides out to the left
+- slideInRight: New image slides in from the right
+- slideOutRight: Current image slides out to the right
+- slideInLeft: New image slides in from the left
+*/
+
+@keyframes slideOutLeft {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideOutRight {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+/* Apply slide animations based on navigation direction */
+.detail-image.sliding-next-out {
+  animation: slideOutLeft 0.3s ease-in-out forwards;
+}
+
+.detail-image.sliding-next-in {
+  animation: slideInRight 0.3s ease-in-out forwards;
+}
+
+.detail-image.sliding-prev-out {
+  animation: slideOutRight 0.3s ease-in-out forwards;
+}
+
+.detail-image.sliding-prev-in {
+  animation: slideInLeft 0.3s ease-in-out forwards;
+}
+
+
+@media screen and (max-height: 600px) {
+  .project-detail-panel{
+    max-height: calc(100vh - (var(--nav-height) + var(--footer-height, 80px) + 80px));
+  }
+  .project-detail-panel{
+    padding:0;
   }
 }

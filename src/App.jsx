@@ -101,19 +101,19 @@ function App() {
       
       <main>
         <div className="sections">
-          <section className={`section ${activeSection === 'hero' ? 'active' : ''}`}>
+          <section className={`section hero ${activeSection === 'hero' ? 'active' : ''}`}>
             <HeroPlaceholder />
           </section>
 
-          <section className={`section ${activeSection === 'about' ? 'active' : ''}`}>
+          <section className={`section about  ${activeSection === 'about' ? 'active' : ''}`}>
             <AboutSection />
           </section>
 
-          <section className={`section ${activeSection === 'projects' ? 'active' : ''}`}>
+          <section className={`section projects ${activeSection === 'projects' ? 'active' : ''}`}>
             <ProjectsCarousel />
           </section>
 
-          <section className={`section ${activeSection === 'contact' ? 'active' : ''}`}>
+          <section className={`section contact ${activeSection === 'contact' ? 'active' : ''}`}>
             <ContactSection />
           </section>
         </div>
