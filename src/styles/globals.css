@@ -3,10 +3,9 @@
 :root {
   --font-base: 1rem; /* 16px */
   --font-scale: 1.25; 
-  --header-height: 40px;
-  --footer-height: 40px;
-  --margin-top: 20px;
-  --margin-bottom: 20px;
+  --header-height: 70px;
+  --footer-height: 70px;
+
 }
 
 
@@ -53,6 +52,7 @@ body {
   font-size: var(--font-base);
   line-height: 1.6;
   font-family: "Poppins", sans-serif;
+  min-height: 100vh;
 }
 
 /* Header - Fixed height */
@@ -78,6 +78,7 @@ header {
   z-index: -1;
   pointer-events: none;
   margin-top: var(--header-height);
+
 }
 
 .section.active {

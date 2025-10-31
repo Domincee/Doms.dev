@@ -158,4 +158,10 @@
     padding: 15px 40px;
  
   }
+   .navbar{
+    --header-height: 40px;
+       height: var(--header-height);
+   }
   }
+
+
