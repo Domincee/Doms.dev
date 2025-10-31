@@ -1,319 +1,195 @@
-/* === HERO SECTION === */
-.hero-section {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 2rem;
-  gap: 3rem;
 
+/* Disable selection and dragging for visuals/text */
+.hero-content > *,
+.hero-profile > *,
+.hero-content span > * {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+
+  -webkit-user-drag: none; /* stop image dragging */
 }
 
-/* === HERO CONTENT === */
-.hero-content {
-  flex: 1 1 50%;
-  z-index: 2;
+/* Re-enable interactivity for buttons, links, and inputs */
+.hero-content a,
+.hero-content button,
+.hero-content input,
+.hero-content textarea,
+.hero-content select {
+  pointer-events: auto;
+  user-select: auto;
+}
+
+/* === HERO SECTION (Mobile-first) === */
+.hero-section {
+  width: 100%;
+  min-height: calc(100vh - var(--header-height) - var(--footer-height));
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
   justify-content: center;
+  align-items: center;
+  padding: 1.5rem;
+  gap: 1rem;
+  overflow: hidden;
   text-align: center;
 }
 
-.hero-content p:nth-child(1) {
+/* Profile + Content Centered */
+.hero-profile,
+.hero-content {
   display: flex;
-  flex-direction: start;
-  margin: 0;
-  letter-spacing: 1.2px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
-.hero-content .name-box {
-  width: fit-content;
-  flex-direction: column;
-  margin: 0 auto;
+/* PROFILE IMAGE */
+.hero-profile img {
+  width: clamp(120px, 40vw, 200px);
+  height: auto;
+  border-radius: 50%;
+  border: 3px solid rgba(0, 139, 139, 0.3);
+  box-shadow: 
+    0 10px 10px rgba(0, 139, 139, 0.2),
+    0 0 24px 4px rgba(244, 39, 244, 0.4);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.hero-profile img:hover {
+  transform: scale(1.08);
+  box-shadow: 
+    0 15px 30px rgba(0, 139, 139, 0.3),
+    0 0 54px rgba(128, 0, 128, 0.3);
+}
+
+/* HERO CONTENT */
+.hero-content {
+  font-size: clamp(0.8rem, 1.5vw, 1rem);
+  color: #4A4A4A;
+  line-height: 1.6;
 }
 
 .hero-content h1 {
-  font-size: 2.5rem;
-  margin: 0;
+  font-size: clamp(1.2rem, 4vw, 1.8rem);
+  color: #333333;
   background: linear-gradient(90deg, #008B8B, #800080);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  font-weight: 700;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+  margin: 0.5rem 0;
 }
 
-/* === DESCRIPTION === */
-.hero-content p:last-of-type {
+.hero-content p {
+  font-size: clamp(0.75rem, 2vw, 1rem);
   color: #4A4A4A;
-  width: 100%;
-  text-align: center;
-  line-height: 1.6;
-  font-size: 1rem;
-  margin-bottom: 1.5rem;
 }
 
 /* === BUTTON === */
 .btn {
   display: inline-block;
-  align-self: center;
-  padding: 0.75rem 2rem;
-  font-size: 1rem;
+  padding: 0.55rem 1.2rem;
+  font-size: clamp(0.7rem, 2vw, 0.9rem);
   color: #008B8B;
   background-color: transparent;
-  text-decoration: none;
+  border: 2px solid #008B8B;
+  border-radius: 1rem;
   font-weight: 600;
   letter-spacing: 0.5px;
   transition: all 0.3s ease;
-  border-radius: 1rem;
-  border: 2px solid #008B8B;
-  width: fit-content;
+  cursor: pointer;
 }
 
 .btn:hover {
   background-color: #5da0ff;
   color: white;
-  box-shadow: 0 4px 8px rgba(0, 139, 139, 0.2);
   transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 139, 139, 0.2);
 }
 
-/* === PROFILE IMAGE === */
-.hero-profile {
-  flex: 1 1 50%;
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.hero-profile img {
-  width: 320px;
-  max-width: 100%;
-  border-radius: 50%;
-  border: 3px solid rgba(0, 139, 139, 0.3);
-  backdrop-filter: blur(10px);
-  box-shadow: 
-    0 10px 10px rgba(0, 139, 139, 0.2),
-    0 6px 6px rgba(75, 145, 145, 0.1),
-    0 0 24px 4px rgba(244, 39, 244, 0.578);
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
-}
-
-.hero-profile img {
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
-}
-.hero-profile img:hover {
-  transform: scale(1.08);
-  box-shadow: 
-    0 15px 30px rgba(0, 139, 139, 0.3),
-    0 10px 10px rgba(0, 139, 139, 0.2),
-      0 0 54px rgba(128, 0, 128, 0.2);
-}
-
-
-/* NAME */
-.hero-content .name-box{
-  color: #c0bbc0;
-  position: relative;
-  display: flex;
-  flex-direction: row;
-  gap:2rem;
-}
-
-.name-box span b {
-  font-size: 2rem;
-  color: #333333;
-}
-
-.name-box span strong {
-  position: absolute;
-  color: #4A4A4A;
-}
-
-.name-box h1 {
-  font-size: 2.5vw;
-  color: #333333;
-}
-
-.roles span {
-  font-size: 1.5rem;
-  color: #4A4A4A;
-}
-
-/* === TABLET: 768px - 1024px === */
-@media (max-width: 1024px) {
+/* === RESPONSIVE BREAKPOINTS === */
+@media (max-width: 360px) {
   .hero-section {
-    gap: 2rem;
+    padding: 1rem 0.5rem;
+    gap: 0.6rem;
+  }
+  .hero-profile img {
+    width: clamp(90px, 35vw, 150px);
+  }
+  .hero-content {
+    gap: 0.5rem;
+  }
+  .btn {
+    font-size: 0.7rem;
+    padding: 0.4rem 1rem;
+  }
+}
+
+/* Small Phones (320–480px) */
+@media (max-width: 480px) {
+  .hero-section {
+    gap: 0.8rem;
+  }
+  .hero-profile img {
+    width: clamp(130px, 45vw, 180px);
+  }
+}
+
+/* Tablets (481–768px) */
+@media (min-width: 481px) and (max-width: 768px) {
+  .hero-section {
+    flex-direction: column-reverse;
     padding: 2rem;
   }
-
   .hero-content h1 {
-    font-size: 2rem;
+    font-size: clamp(1.5rem, 3vw, 2rem);
   }
-  
+  .hero-content p {
+    font-size: clamp(1rem, 2vw, 1.2rem);
+  }
   .hero-profile img {
-    width: 280px;
-   }
-
-  .name-box h1{
-    font-size: 2.5vw;
-  }
-
-  .hero-content p:last-of-type {
-    font-size: 0.95rem;
-  }
-
-  .btn {
-    font-size: 0.95rem;
-    padding: 0.6rem 1.5rem;
+    width: clamp(180px, 35vw, 250px);
   }
 }
 
-/* === MOBILE: Below 768px === */
-@media (max-width: 768px) {
+/* Desktop (769px+) */
+@media (min-width: 769px) {
   .hero-section {
-    flex-direction: column;
-    gap: 1.5rem;
-    padding: 1rem;
-    text-align: center;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 3rem 2rem;
+  }
+  .hero-content {
+    text-align: left;
+    align-items: flex-start;
+    max-width: 500px;
+  }
+  .hero-content h1 {
+    font-size: clamp(2rem, 3vw, 2.5rem);
+  }
+}
+@media screen and (max-height: 600px) {
+  .hero-section {
+    justify-content: flex-start;
+    padding-top: 0.5rem;
+    padding-bottom: 2rem; /* adds safe space above footer */
+  }
+
+  .hero-profile img {
+    width: clamp(100px, 35vw, 140px);
   }
 
   .hero-content {
-    flex: 1 1 100%;
-    order: 2;
-  }
-
-  .hero-profile {
-    flex: 1 1 100%;
-    order: 1;
-  }
- 
-  .hero-content h1 {
-    font-size: 2vw;
-  }
-
-  .hero-content p:last-of-type {
-    font-size: 0.9rem;
-    margin-top: 1rem;
-    margin-bottom: 1.5rem;
-  }
-
-  .hero-profile img {
-    width: 280px;
-  }
-
-  .btn {
-    font-size: 0.9rem;
-    padding: 0.6rem 1.5rem;
-    margin: 0 auto;
-    display: block;
-  }
-
-  .roles {
-    height: 1.5rem;
-  }
-
-   .name-box h1{
-    font-size: 2rem;
-  }
-
-}
-/* === SMALL MOBILE: Below 480px === */
-@media (max-width: 480px) {
-      .hero-section {
-        padding: 0.75rem;
-        gap: 1rem;
-      }
-
-      .hero-content h1 {
-        font-size: 1.4rem;
-      }
-
-      .hero-content p:last-of-type {
-        font-size: 0.85rem;
-        line-height: 1.5;
-      }
-
-      .hero-profile img {
-        width: 220px;
-      }
-
-      .btn {
-        font-size: 0.85rem;
-        padding: 0.5rem 1.2rem;
-      }
-
-        .roles span {
-          font-size: 1rem;
-        }
-
-        .name-box span b{
-        font-size: 2rem;
-
-      }
-
-      .name-box span strong{
-        position: absolute;
-      }
-
-
-      .name-box h1{
-        font-size: 6vw;
-      }
-  }
- 
-
-
-@media (max-width: 320px) {
-  header {
-    height: 40px;
-  }
-  
-  .sections{
-    height: calc(100vh - 20px - 40px);
-  }
-
-  .hero-content h1 {
-    font-size: 1rem;
-  }
-
-  .hero-content p:last-of-type {
-    font-size: 0.7rem;
-    line-height: 1;
-  }
- .hero-profile{
-  margin: 0;
- }
-  .hero-profile img {
-    width: 140px;
+    gap: 0;
+    font-size: clamp(0.75rem, 1.8vw, 0.9rem);
   }
 
   .btn {
     font-size: 0.7rem;
-    padding: 0.4rem 0.5rem;
+    padding: 0.4rem 1rem;
   }
-
-
-
-  .roles span {
-    font-size: 0.8rem;
-  }
-
-      .name-box span b{
-      font-size: 1.2rem;
-
-    }
-
-    .name-box span strong{
-      position: absolute;
-    }
-
-
-    .name-box h1{
-      font-size: 6vw;
-    }
 }
-
 
  /* Roles Animation */.hero-content h2 {
   font-size: inherit;
@@ -359,7 +235,9 @@
   animation: none;
 }
 
-
+@media screen and (max-width:800, ){
+  
+}
 
 
 /* --- Base hidden state --- */

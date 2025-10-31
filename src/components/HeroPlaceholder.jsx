@@ -97,7 +97,7 @@ const HeroSection = ({ setActiveSection  }) => {
               </span>
             </h2>
 
-        <a href="#portfolio" className="btn" onClick={handleClick}>View My Work</a>;
+        <a href="#portfolio" className="btn" onClick={handleClick}>View My Work</a>
       </div>
 
       <div className="hero-profile">

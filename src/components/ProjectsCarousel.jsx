@@ -53,6 +53,7 @@ const ProjectsCarousel = () => {
     <>
       <div className="projects-section">
         <div className="projects-carousel">
+          
           <div className="carousel-header">
             <h2>My Projects</h2>
             <p>Explore my latest work and side projects</p>

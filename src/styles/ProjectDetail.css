@@ -236,7 +236,7 @@
 }
 
 .project-detail-content h2 {
-  font-size: 36px;
+  font-size: 26px;
   font-weight: 700;
   color: #111;
   margin-bottom: 10px;
@@ -335,9 +335,12 @@
   }
 
   .project-detail-content h2 {
-    font-size: 28px;
+    font-size: 18px;
   }
 
+  .project-detail-content span {
+    font-size: 12px;
+  }
   .project-detail-section h3 {
     font-size: 18px;
   }
@@ -572,6 +575,7 @@ These animations create a smooth sliding effect when navigating between images.
 
 /* Status badge base */
 .status-badge {
+  font-size: 1.4rem;
   transition: all 0.5s;
   animation: glow 2s infinite;
   /* default fallback colors */
