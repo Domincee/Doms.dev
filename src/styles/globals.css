@@ -61,7 +61,6 @@ header {
   flex-shrink: 0;
   height: var(--header-height);
 }
-
 /* Main content - Takes remaining space */
 
 .section {
@@ -79,6 +78,14 @@ header {
   pointer-events: none;
   margin-top: var(--header-height);
 
+}
+
+@media screen and (max-width: 480px) {
+  .section{
+    --header-height: 20px;
+
+    margin-top: var(--header-height);
+  }
 }
 
 .section.active {
@@ -102,7 +109,6 @@ footer {
   gap: 10px;
   padding: 13px 25px;
   background-color: rgb(227, 227, 227);
-
   color: #666;
 }
 

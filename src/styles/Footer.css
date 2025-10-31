@@ -5,7 +5,8 @@
   gap: 15px;
   padding: 15px 20px;
   border-top: 2px solid rgba(0, 139, 139, 0.2);
-  background: rgba(255, 255, 255, 0.95);
+  background: rgb(255, 255, 255);
+
 }
 
 .footer-icons {
@@ -39,10 +40,11 @@
   position: absolute;
   right: 5px;
   bottom: 5px;
-  font-size: 13px;
+  font-size: 8px;
   color: #4A4A4A;
   text-align: center;
   font-weight: 500;
+  
 }
 
 
@@ -60,10 +62,10 @@ ul{
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 32px;
-  height: 32px;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
-  background: rgba(0, 139, 139, 0.1);
+  background: rgba(171, 213, 255, 0.427);
   border: 1px solid rgba(0, 139, 139, 0.2);
   transition: all 0.3s ease;
 }
@@ -105,25 +107,22 @@ ul{
     
       
     .list-icons a{
-      width: 21px;
-      height: 21px;
+      width: 28px;
+      height: 28px;
     }
     .list-icons {
        gap: 1rem;
 
     }
     .footer-text {
-    font-size: 6px;
+    font-size: 4px;
       right: 2px;
       bottom: 2px;
   }
-  }
 
-
-  
-@media (max-width: 480px) {
    footer{
-    --footer-height: 40px;
+    --footer-height: 45px;
        height: var(--footer-height);
    }
   }
+

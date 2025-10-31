@@ -235,8 +235,19 @@
   animation: none;
 }
 
-@media screen and (max-width:800, ){
+@media screen and (max-height:568px ){
   
+  .header{
+   background-color: red;
+    height: 40px;
+  }
+
+  .hero-content{
+    margin-top: -12px;
+  }
+  .hero-content .name-box{
+    display: flex;
+  }
 }
 
 
