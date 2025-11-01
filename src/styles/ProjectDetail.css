@@ -64,6 +64,16 @@
   transform: translateY(0);
 }
 
+/* HIDE first */
+.project-tags-detail span{
+  opacity: 0;
+
+}
+
+.project-detail-overlay.open .project-tags-detail span{
+  opacity: 1;
+
+}
 /* Close button */
 .project-detail-close {
   position: absolute;
@@ -188,7 +198,7 @@
 }
 
 .image-dot.active {
-  background: white;
+  background: rgb(202, 133, 180);
   transform: scale(1.2);
 }
 
@@ -282,6 +292,15 @@
   flex: 1;
   height: fit-content;
 }
+  .project-tags-detail{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+ .project-tags-detail span{
+    font-size: 0.8rem;
+    margin-bottom: 25px;
+  }
 
 .project-actions button:disabled {
   opacity: 0.5;
@@ -702,18 +721,22 @@ These animations create a smooth sliding effect when navigating between images.
 
 /* Status-specific colors */
 .status-badge.completed {
-  --glow-start: #9bc377;
-  --glow-end: #84b845;
+  color: #2ecc71;
+  --glow-start: #9ac37787;
+  --glow-end: #84b8459d;
 }
 
 .status-badge.ongoing {
-  --glow-start: #57bcff;
-  --glow-end: #056fb5;
+  color:#57bcffd7;
+  --glow-start: #57bcff9e;
+  --glow-end: #056fb5b4;
 }
 
 .status-badge.maintenance {
-  --glow-start: #ff7171;
-  --glow-end: #ff0000;
+  color:#ff4545cf;
+
+  --glow-start: #ff7171ac;
+  --glow-end: #ff000096;
 }
 
 /* Single keyframe animation */

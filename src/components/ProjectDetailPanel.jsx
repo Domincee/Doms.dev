@@ -159,9 +159,19 @@ const ProjectDetailPanel = ({ project, isOpen, onClose }) => {
             <div>
               <h2>{project.title}</h2>
             </div>
+
             <span className={`status-badge ${project.status}`}>
               {project.status}
             </span>
+          </div>
+
+
+          <div className="project-tags-detail">
+            {project.tags.map((tag, index) => (
+              <span key={index} className="project-tag">
+                {tag}
+              </span>
+            ))}
           </div>
 
           <div className="project-detail-section">

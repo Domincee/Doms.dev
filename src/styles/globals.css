@@ -161,20 +161,6 @@ footer {
   text-transform: capitalize;
 }
 
-.status-badge.completed {
-  background: rgba(46, 204, 113, 0.15);
-  color: #2ecc71;
-}
-
-.status-badge.ongoing {
-  background: rgba(52, 152, 219, 0.15);
-  color: #3498db;
-}
-
-.status-badge.maintenance {
-  background: rgba(231, 76, 60, 0.15);
-  color: #e74c3c;
-}
 
 /* Tool badges */
 .tool-badge {
