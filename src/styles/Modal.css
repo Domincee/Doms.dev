@@ -4,7 +4,6 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(5px);
   display: flex;
   justify-content: center;
@@ -29,7 +28,7 @@
   flex-direction: column;
   transform: translateY(50px);
   transition: transform 0.4s ease;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
 }
 
 .modal-overlay.open .modal-content {
@@ -147,7 +146,7 @@
 }
 
 .skill-item-icon {
-  font-size: 48px;
+  font-size: 24px;
   margin-bottom: 10px;
 }
 
@@ -166,6 +165,7 @@
 
 /* Experience & Education Cards */
 .timeline-item {
+  position: relative;
   display: flex;
   gap: 20px;
   margin-bottom: 30px;
@@ -181,9 +181,14 @@
 }
 
 .timeline-image {
-  flex: 0 0 80px;
+  top: 0;
+  left: 0;
+  z-index: -1;  
+  position: absolute;
+  height: 100%;
   border-radius: 10px;
-  background: rgba(167, 121, 247, 0.1);
+  opacity: 0.2;
+  background: rgba(34, 33, 35, 0.1);
 }
 
 .timeline-image img {
@@ -262,16 +267,7 @@
     flex-direction: column;
     padding: 20px;
   }
- .timeline-image {
-  position: fixed;
-
-  width: 350px;
-  height: 320px;
-  z-index: -1;
-  opacity: 0.4; /* lowered for subtle visibility */
-  filter: brightness(0.8) blur(1px); /* softens the image */
-  pointer-events: none; /* ensures it doesn’t block clicks */
-}
+ 
 
 
 }

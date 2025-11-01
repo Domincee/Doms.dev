@@ -4,21 +4,16 @@
 ====================================
 */
 
-/*
-Defines the responsive font sizes (fs) using clamp() for all text elements.
-This handles the requirement for smaller fonts on mobile/tablet screens.
-*/
 :root {
-  /* Layout Heights (Desktop/Tablet default: 70px) */
   --nav-height: 70px;
   --footer-height: 70px;
 
   /* Font Variables */
-  --fs-heading: clamp(1.6rem, 1.2rem + 1vw, 2.5rem);    /* H2 in header */
-  --fs-subheading: clamp(1rem, 0.8rem + 0.5vw, 1.25rem); /* P in header, H3 in social */
-  --fs-body: clamp(0.9rem, 0.75rem + 0.4vw, 1rem);      /* Input/Textarea text */
-  --fs-small: clamp(0.8rem, 0.7rem + 0.3vw, 0.9rem);    /* Label text, form status */
-  --fs-icon: clamp(1rem, 0.8rem + 0.5vw, 1.5rem);       /* Social media icons */
+  --fs-heading: clamp(1.6rem, 1.2rem + 1vw, 2.5rem);
+  --fs-subheading: clamp(1rem, 0.8rem + 0.5vw, 1.25rem);
+  --fs-body: clamp(0.9rem, 0.75rem + 0.4vw, 1rem);
+  --fs-small: clamp(0.8rem, 0.7rem + 0.3vw, 0.9rem);
+  --fs-icon: clamp(1rem, 0.8rem + 0.5vw, 1.5rem);
 }
 
 /*
@@ -31,39 +26,38 @@ This handles the requirement for smaller fonts on mobile/tablet screens.
   position: relative;
   width: 100%;
   display: flex;
-  justify-content: center; /* Ensures container is always horizontally centered */
-  
-  /* Adds mandatory spacing between navbar and footer */
-  padding: clamp(40px, 2vw, 80px) 0; 
-  /* Uses the responsive variables defined in :root and media queries below */
+  justify-content: center; /* Centers horizontally */
+  align-items: center; /* Centers vertically if height is big enough */
+  padding: clamp(40px, 2vw, 80px) 0;
   margin-bottom: var(--footer-height);
-
   box-sizing: border-box;
+  background-color: #fff;
 }
 
 .contact-container {
   display: flex;
   align-items: flex-start;
-  justify-content: space-between; /* Creates the left (header) / right (form) split */
-  
+  text-align: center;
+  justify-content: center; /* Centers content horizontally */
+  flex-direction: row; /* Row layout on desktop */
   width: 90%;
   max-width: 1200px;
   gap: clamp(2rem, 5vw, 6rem);
-  flex-wrap: wrap; /* Allows vertical stacking on smaller screens */
-
+  flex-wrap: nowrap;
+  margin: 0 auto;
 }
 
 /*
----
+------------------------------------
 ### Left Column: Header & Intro
----
+------------------------------------
 */
 .contact-header {
   flex: 1;
+  margin: auto 0;
   min-width: 320px;
-  height: 100%;
-  max-width: 500px;
-  text-align: center;
+  max-width: 400px;
+  text-align: left;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -84,30 +78,30 @@ This handles the requirement for smaller fonts on mobile/tablet screens.
 }
 
 /*
----
-### Right Column: Form (Made Smaller)
----
+------------------------------------
+### Right Column: Form
+------------------------------------
 */
 .contact-form {
-  display: flex;
-  flex-direction: column;
   flex: 1;
-  min-width: 240px; /* Reduced min-width slightly */
-  max-width: 450px; /* Reduced max-width to make the form smaller */
-  height: fit-content;
+  min-width: 280px;
+  text-align: start;
+  max-width: 450px;
   background: white;
   padding: clamp(25px, 3vw, 40px);
   border-radius: 20px;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
 }
-
+.contact-form button{
+  width: 100%;
+}
 .form-group {
   margin-bottom: clamp(15px, 2vw, 25px);
 }
 
 .form-group label {
   display: block;
-  font-size: var(--fs-small); /* Responsive label font */
+  font-size: var(--fs-small);
   font-weight: 600;
   color: #111;
   margin-bottom: 8px;
@@ -119,12 +113,15 @@ This handles the requirement for smaller fonts on mobile/tablet screens.
   padding: clamp(10px, 1vw + 5px, 14px) clamp(12px, 2vw, 18px);
   border: 2px solid rgba(0, 0, 0, 0.08);
   border-radius: 10px;
-  font-size: var(--fs-body); /* Responsive input text font */
+  font-size: var(--fs-body);
   font-family: 'Poppins', sans-serif;
   color: #111;
   background: white;
   transition: all 0.3s ease;
-}
+} 
+
+
+
 .form-group input:focus,
 .form-group textarea:focus {
   outline: none;
@@ -156,14 +153,17 @@ This handles the requirement for smaller fonts on mobile/tablet screens.
 }
 
 /*
----
+------------------------------------
 ### Social Icons
----
+------------------------------------
 */
 .contact-social {
-  margin-top: clamp(20px, 3vh, 40px);
+  flex: 1;
+  min-width: 200px;
+  
+  max-width: 300px;
   text-align: center;
-  padding-bottom: clamp(10px, 2vh, 20px);
+  margin: auto 0;
 }
 
 .contact-social h3 {
@@ -188,7 +188,7 @@ This handles the requirement for smaller fonts on mobile/tablet screens.
   align-items: center;
   justify-content: center;
   color: #a779f7;
-  font-size: var(--fs-icon); /* Responsive icon size */
+  font-size: var(--fs-icon);
   transition: all 0.3s ease;
 }
 
@@ -201,50 +201,44 @@ This handles the requirement for smaller fonts on mobile/tablet screens.
 
 /*
 ====================================
-## 📱 Mobile Responsiveness (Stacking)
+## 📱 Responsive Layout
 ====================================
 */
 
-/* Mobile Layout Overrides (<= 900px) */
 @media (max-width: 900px) {
-  /* Sets the smaller 40px heights for fixed header/footer on mobile */
-  :root {
-    --nav-height: 40px;
-    --footer-height: 40px;
-  }
-
   .contact-container {
-    flex-direction: column; /* Stack vertically: Header > Form > Social */
+    flex-direction: column; /* Stack vertically */
     align-items: center;
-    gap: 2rem;
+    text-align: center;
+    gap: 2.5rem;
   }
 
   .contact-header {
     text-align: center;
     align-items: center;
-    max-width: 600px;
   }
 
   .contact-form {
     width: 100%;
     max-width: 500px;
   }
+
+  .contact-social {
+    margin-top: 1rem;
+  }
 }
 
-/* Smaller viewport height optimization */
 @media (max-height: 650px) {
   .contact-form {
     padding: 20px;
   }
 
-  /* Make form elements even smaller for tight vertical space */
   .form-group input,
   .form-group textarea {
     padding: 8px 10px;
     font-size: 0.85rem;
   }
 
-  /* Reduce heading size slightly more */
   .contact-header h2 {
     font-size: clamp(1.2rem, 2vh + 0.5vw, 1.6rem);
   }
@@ -252,16 +246,10 @@ This handles the requirement for smaller fonts on mobile/tablet screens.
 
 /*
 ====================================
-## ✨ Animations & Transition States
+## ✨ Animation States
 ====================================
 */
 
-@keyframes contactFadeInUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* Initial state: Hidden and slightly lowered */
 .contact-section .contact-header,
 .contact-section .contact-form,
 .contact-section .contact-social {
@@ -270,7 +258,6 @@ This handles the requirement for smaller fonts on mobile/tablet screens.
   transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Active state (when section is visible) */
 .section.contact.active .contact-section .contact-header {
   opacity: 1;
   transform: translateY(0);
