@@ -1,96 +1,73 @@
-/* GLOBAL FONT SIZE TUNING */
+/*
+====================================
+## 🎨 Global Fluid Typography & Layout Variables
+====================================
+*/
+
+/*
+Defines the responsive font sizes (fs) using clamp() for all text elements.
+This handles the requirement for smaller fonts on mobile/tablet screens.
+*/
 :root {
-  --fs-heading: clamp(1.5rem, 1.2rem + 1vw, 2.25rem);
-  --fs-subheading: clamp(0.9rem, 0.7rem + 0.6vw, 1.25rem);
-  --fs-body: clamp(0.85rem, 0.7rem + 0.5vw, 1rem);
-  --fs-small: clamp(0.7rem, 0.6rem + 0.4vw, 0.9rem);
+  /* Layout Heights (Desktop/Tablet default: 70px) */
+  --nav-height: 70px;
+  --footer-height: 70px;
+
+  /* Font Variables */
+  --fs-heading: clamp(1.6rem, 1.2rem + 1vw, 2.5rem);    /* H2 in header */
+  --fs-subheading: clamp(1rem, 0.8rem + 0.5vw, 1.25rem); /* P in header, H3 in social */
+  --fs-body: clamp(0.9rem, 0.75rem + 0.4vw, 1rem);      /* Input/Textarea text */
+  --fs-small: clamp(0.8rem, 0.7rem + 0.3vw, 0.9rem);    /* Label text, form status */
+  --fs-icon: clamp(1rem, 0.8rem + 0.5vw, 1.5rem);       /* Social media icons */
 }
 
-/* CONTACT HEADER */
-.contact-header h2 {
-  font-size: var(--fs-heading);
-}
-
-.contact-header p {
-  font-size: var(--fs-subheading);
-}
-
-/* FORM */
-.form-group label {
-  font-size: var(--fs-small);
-}
-
-.form-group input,
-.form-group textarea {
-  font-size: var(--fs-body);
-}
-
-/* CONTACT SOCIAL */
-.contact-social h3 {
-  font-size: var(--fs-subheading);
-}
-
-.social-icon {
-  font-size: clamp(0.8rem, 0.6rem + 0.5vw, 1rem);
-  width: clamp(30px, 5vw, 50px);
-  height: clamp(30px, 5vw, 50px);
-}
-/* ===============================
-   CONTACT SECTION — FLUID + PRECISE
-   =============================== */
-
-:root {
-  /* Fluid font scale — adjusts with width */
-  --fs-heading: clamp(1.4rem, 1.1rem + 1vw, 2.2rem);
-  --fs-subheading: clamp(0.95rem, 0.7rem + 0.7vw, 1.25rem);
-  --fs-body: clamp(0.85rem, 0.7rem + 0.5vw, 1rem);
-  --fs-small: clamp(0.75rem, 0.65rem + 0.3vw, 0.9rem);
-  --fs-icon: clamp(1rem, 0.8rem + 0.5vw, 1.5rem);
-}
-/* ===============================
-   CONTACT SECTION — DESKTOP SPLIT + FLUID
-   =============================== */
-
-:root {
-  --fs-heading: clamp(1.6rem, 1.2rem + 1vw, 2.5rem);
-  --fs-subheading: clamp(1rem, 0.8rem + 0.5vw, 1.25rem);
-  --fs-body: clamp(0.9rem, 0.75rem + 0.4vw, 1rem);
-  --fs-small: clamp(0.8rem, 0.7rem + 0.3vw, 0.9rem);
-  --fs-icon: clamp(1rem, 0.8rem + 0.5vw, 1.5rem);
-}
+/*
+====================================
+## 🏗️ Contact Section Wrapper & Layout
+====================================
+*/
 
 .contact-section {
   position: relative;
   width: 100%;
   display: flex;
-  justify-content: center;
-  padding: clamp(40px, 4vw, 80px);
-  margin-top: var(--nav-height, 100px);
-  margin-bottom: var(--footer-height, 100px);
+  justify-content: center; /* Ensures container is always horizontally centered */
+  
+  /* Adds mandatory spacing between navbar and footer */
+  padding: clamp(40px, 2vw, 80px) 0; 
+  /* Uses the responsive variables defined in :root and media queries below */
+  margin-bottom: var(--footer-height);
+
   box-sizing: border-box;
 }
 
 .contact-container {
   display: flex;
   align-items: flex-start;
-  justify-content: space-between;
+  justify-content: space-between; /* Creates the left (header) / right (form) split */
+  
   width: 90%;
   max-width: 1200px;
   gap: clamp(2rem, 5vw, 6rem);
-  flex-wrap: wrap; /* for mobile fallback */
+  flex-wrap: wrap; /* Allows vertical stacking on smaller screens */
+
 }
 
-/* ---------- LEFT: HEADER ---------- */
+/*
+---
+### Left Column: Header & Intro
+---
+*/
 .contact-header {
   flex: 1;
   min-width: 320px;
+  height: 100%;
   max-width: 500px;
-  text-align: left;
+  text-align: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
   gap: 1rem;
-  animation: contactFadeInUp 0.5s ease both;
 }
 
 .contact-header h2 {
@@ -106,16 +83,22 @@
   line-height: 1.6;
 }
 
-/* ---------- RIGHT: FORM ---------- */
+/*
+---
+### Right Column: Form (Made Smaller)
+---
+*/
 .contact-form {
+  display: flex;
+  flex-direction: column;
   flex: 1;
-  min-width: 340px;
-  max-width: 550px;
+  min-width: 240px; /* Reduced min-width slightly */
+  max-width: 450px; /* Reduced max-width to make the form smaller */
+  height: fit-content;
   background: white;
   padding: clamp(25px, 3vw, 40px);
   border-radius: 20px;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
-  animation: contactFadeInUp 0.7s ease both;
 }
 
 .form-group {
@@ -124,7 +107,7 @@
 
 .form-group label {
   display: block;
-  font-size: var(--fs-small);
+  font-size: var(--fs-small); /* Responsive label font */
   font-weight: 600;
   color: #111;
   margin-bottom: 8px;
@@ -136,13 +119,12 @@
   padding: clamp(10px, 1vw + 5px, 14px) clamp(12px, 2vw, 18px);
   border: 2px solid rgba(0, 0, 0, 0.08);
   border-radius: 10px;
-  font-size: var(--fs-body);
+  font-size: var(--fs-body); /* Responsive input text font */
   font-family: 'Poppins', sans-serif;
   color: #111;
   background: white;
   transition: all 0.3s ease;
 }
-
 .form-group input:focus,
 .form-group textarea:focus {
   outline: none;
@@ -151,7 +133,7 @@
 }
 
 .form-group textarea {
-  min-height: clamp(100px, 20vh, 140px);
+  min-height: clamp(100px, 10vh, 140px);
   resize: vertical;
 }
 
@@ -173,7 +155,11 @@
   color: #e74c3c;
 }
 
-/* ---------- SOCIAL ---------- */
+/*
+---
+### Social Icons
+---
+*/
 .contact-social {
   margin-top: clamp(20px, 3vh, 40px);
   text-align: center;
@@ -202,7 +188,7 @@
   align-items: center;
   justify-content: center;
   color: #a779f7;
-  font-size: var(--fs-icon);
+  font-size: var(--fs-icon); /* Responsive icon size */
   transition: all 0.3s ease;
 }
 
@@ -213,12 +199,23 @@
   box-shadow: 0 8px 20px rgba(167, 121, 247, 0.3);
 }
 
-/* ---------- RESPONSIVE STACK ---------- */
+/*
+====================================
+## 📱 Mobile Responsiveness (Stacking)
+====================================
+*/
+
+/* Mobile Layout Overrides (<= 900px) */
 @media (max-width: 900px) {
+  /* Sets the smaller 40px heights for fixed header/footer on mobile */
+  :root {
+    --nav-height: 40px;
+    --footer-height: 40px;
+  }
+
   .contact-container {
-    flex-direction: column;
+    flex-direction: column; /* Stack vertically: Header > Form > Social */
     align-items: center;
-    text-align: center;
     gap: 2rem;
   }
 
@@ -234,73 +231,60 @@
   }
 }
 
+/* Smaller viewport height optimization */
 @media (max-height: 650px) {
   .contact-form {
     padding: 20px;
   }
 
+  /* Make form elements even smaller for tight vertical space */
   .form-group input,
   .form-group textarea {
     padding: 8px 10px;
     font-size: 0.85rem;
   }
 
+  /* Reduce heading size slightly more */
   .contact-header h2 {
     font-size: clamp(1.2rem, 2vh + 0.5vw, 1.6rem);
   }
 }
 
-/* ---------- ANIMATIONS ---------- */
-@keyframes contactFadeInUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes slideDown {
-  from { opacity: 0; transform: translateY(-10px); }
-  to { opacity: 1; transform: translateY(0); }
-}
+/*
+====================================
+## ✨ Animations & Transition States
+====================================
+*/
 
 @keyframes contactFadeInUp {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
-.contact-section.active .contact-header {
-  animation: contactFadeInUp 0.6s cubic-bezier(0.4,0,0.2,1) 0s both;
-}
-.contact-section.active .contact-form {
-  animation: contactFadeInUp 0.6s cubic-bezier(0.4,0,0.2,1) 0.3s both;
-}
-
-/* ---------- Contact Section Animation ---------- */
-
-/* Initial state: hidden and slightly lowered */
-.contact-section .contact-form
-{
+/* Initial state: Hidden and slightly lowered */
+.contact-section .contact-header,
+.contact-section .contact-form,
+.contact-section .contact-social {
   opacity: 0;
   transform: translateY(30px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
+  transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
-.contact-section .contact-header
-{
-  opacity: 0;
-  transition: opacity 0.6s ease;
-}
+
 /* Active state (when section is visible) */
 .section.contact.active .contact-section .contact-header {
   opacity: 1;
-  transition-delay: 0.7s;
+  transform: translateY(0);
+  transition-delay: 0.1s;
 }
 
 .section.contact.active .contact-section .contact-form {
   opacity: 1;
   transform: translateY(0);
-  transition-delay: 0.4s;
+  transition-delay: 0.3s;
 }
 
 .section.contact.active .contact-section .contact-social {
   opacity: 1;
   transform: translateY(0);
-  transition-delay: 0.7s;
+  transition-delay: 0.5s;
 }
