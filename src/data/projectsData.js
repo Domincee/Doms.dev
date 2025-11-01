@@ -16,32 +16,33 @@ const images1 = Object.values(project1Images).map((mod) => {
 console.log(images1); 
 const projects = [
   {
-    id: 'project-1',
-    title: 'Task Manager Pro',
-    shortDescription: 'A modern task management application',
+
+     id: 'project-1',
+    title: 'Banana Leaf Disease Detector (KNN)',
+    shortDescription: 'Image classification system to identify banana leaf health using traditional computer vision features.',
     image: bananaLeafHero,
-    images: images1,
     totalImages: images1.length,
+    images: images1,
     status: 'completed',
-    tags: ['React', 'Vite', 'CSS'],
-    tools: ['React', 'Vite', 'Plain CSS'],
-    goal: 'Create an intuitive task management system to boost productivity and organization.',
-    description: 'Task Manager Pro is a comprehensive solution for managing daily tasks and deadlines. Features include task categorization, priority levels, and deadline tracking. Built with React for a responsive user experience and styled with modern CSS for a clean interface.',
-    liveDemo: '',
-    repo: ''
+    tags: ['Python', 'Computer Vision', 'Machine Learning', 'Classification'],
+    tools: ['OpenCV', 'Scikit-learn', 'Numpy', 'Pandas'],
+    goal: 'Accurately classify banana leaf images (Healthy vs. Diseased vs None-leaf) by extracting color, texture, and shape features.',
+    description: 'This project implements a banana leaf health classification system using classical Machine Learning. It processes input images to segment the leaf and extracts detailed features (such as GLCM texture, LBP, HOG, and color statistics). These features are then fed into a K-Nearest Neighbors (KNN) classifier, optimized via iterative search, to determine the leaf’s health status. The system includes data preprocessing, feature normalization, and robust model evaluation using confusion matrices.',
+    liveDemo: '', // Add link if deployed
+    repo: 'https://github.com/Domincee/Banana-Leaf-Detector'
   },
   {
     id: 'project-2',
-    title: 'Weather Dashboard',
-    shortDescription: 'Real-time weather tracking application',
+    title: 'AI Text Summarizer (Web App)',
+    shortDescription: 'A web application that generates concise summaries from long articles or text inputs using a powerful API.',
     image: myGoal,
-    status: 'ongoing',
-    tags: ['React', 'API', 'CSS'],
-    tools: ['React', 'Weather API', 'CSS'],
-    goal: 'Provide users with accurate, real-time weather information in a beautiful interface.',
-    description: 'Weather Dashboard integrates with weather APIs to display current conditions, forecasts, and weather alerts. Features location-based weather tracking, hourly and weekly forecasts, and interactive weather maps.',
-    liveDemo: '',
-    repo: ''
+    status: 'maintenance',
+    tags: ['React', 'RapidAPI', 'Tailwind CSS', 'NLP'],
+    tools: ['Vite', 'React', 'Tailwind CSS', 'External AI API'],
+    goal: 'Build a user-friendly, responsive tool to quickly condense large volumes of text, saving users time and improving information processing.',
+    description: 'The AI Text Summarizer is a modern web utility designed to simplify information overload. The application is built with React and uses Tailwind CSS for rapid, clean styling and responsiveness. It connects to a specialized external API (like a model hosted on RapidAPI) to perform the heavy lifting of Natural Language Processing (NLP), delivering accurate, concise, and contextually relevant summaries from any pasted URL or text block.',
+    liveDemo: '', // Add link if deployed
+    repo: 'https://github.com/Domincee/Summarizer'
   },
   {
     id: 'project-3',
@@ -73,7 +74,7 @@ const projects = [
     id: 'project-5',
     title: 'Fitness Tracker',
     shortDescription: 'Track workouts and progress',
-    image: '/assets/images/project-placeholder-5.jpg',
+    image: howIsIt,
     status: 'ongoing',
     tags: ['React', 'Charts', 'Mobile'],
     tools: ['React', 'Chart.js', 'LocalStorage'],
@@ -86,7 +87,7 @@ const projects = [
     id: 'project-6',
     title: 'Recipe Finder',
     shortDescription: 'Discover and save recipes',
-    image: '/assets/images/project-placeholder-6.jpg',
+    image: howIsIt,
     status: 'completed',
     tags: ['React', 'API', 'Search'],
     tools: ['React', 'Recipe API', 'CSS Grid'],

@@ -1,25 +1,24 @@
-/*
-====================================
-## 🎨 Base Font & Colors
-====================================
-*/
-
 :root {
-  /* Base font & colors */
-  --font-base: 0.875rem; /* 14px default mobile font */
-  --font-scale: 1.25; 	/* optional scale for headings */
-  --color-primary: #a779f7;
-  --color-text-dark: #111;
-  --color-text-light: #666;
+--card-gap: 24px; /* total space between cards /
+--edge-pad: 16px; / space at left/right edges */
 }
 
-/*
----
-## 📏 Heading Scaling
----
-*/
+.carousel-container { padding-inline: var(--edge-pad); }
+.project-card {
+padding-inline: calc(var(--card-gap) / 2);
+box-sizing: border-box;
+}
+.carousel-track { gap: 0; }
 
-/* Heading scaling based on --font-base */
+/* create even gap between cards:
+use half on each side so the total between two cards = var(--card-gap) /
+.project-card {
+padding-inline: calc(var(--card-gap) / 2);
+box-sizing: border-box; / keep this so padding doesn't change flex basis */
+
+/* make sure track doesn't add extra spacing (we are using per-card padding) */
+
+/* Headings */
 h1 { font-size: calc(var(--font-base) * 2); }
 h2 { font-size: calc(var(--font-base) * 1.75); }
 h3 { font-size: calc(var(--font-base) * 1.5); }
@@ -27,269 +26,232 @@ h4 { font-size: calc(var(--font-base) * 1.25); }
 h5 { font-size: calc(var(--font-base) * 1.125); }
 h6 { font-size: var(--font-base); }
 
-
-/*
----
-## 🏗️ Project Section Wrapper
----
-*/
-
-/* --- ADDED: Styles for the new .projects-section wrapper --- */
+/* Wrapper */
 .projects-section {
-  width: 100%;
-  height: 100%; 
-  display: flex;
-  justify-content: center;
-  align-items: flex-start; 
-  position: relative;
-  margin: 0;
-  gap: 0;
+width: 100%;
+height: 100%;
+display: flex;
+justify-content: center;
+align-items: flex-start;
+position: relative;
+margin: 0;
+gap: 0;
 }
 
 .projects-carousel {
-  width: 100%;
-  min-height: 100%; 
-  padding: 40px 0;
-  margin-top: 0;
-  display: flex;
-  flex-direction: column; /* stacked on mobile */
-  align-items: center;
+width: 100%;
+min-height: 100%;
+padding: 40px 0;
+display: flex;
+flex-direction: column;
+align-items: center;
 }
 
-/*
----
-## 🎠 Carousel Structure
----
-*/
+/* Header */
+.carousel-header {
+margin-bottom: 25px;
+width: 100%;
+text-align: center;
+}
+.carousel-header h2 {
+color: var(--color-text-dark);
+font-weight: 700;
+}
+.carousel-header p {
+color: var(--color-text-light);
+font-size: calc(var(--font-base) * 1);
+margin-top: 8px;
+}
 
-/* --- ADDED: Styles for the carousel containers --- */
+/* Track */
 .carousel-container {
-  position: relative;
-  overflow: hidden;
-  width: 95%; 
-  max-width: 1200px;
-  flex-grow: 1; 
+position: relative;
+overflow: hidden;
+width: 95%;
+max-width: 1200px;
+flex-grow: 1;
 }
 
 .carousel-track {
-  display: flex;
-  transition: transform 0.5s ease;
+display: flex;
+transition: transform 0.6s ease;
+will-change: transform;
 }
 
-
-.carousel-header{
-  margin-bottom: 25px;
-  width: 100%;
-  text-align: center;
-}
-
-/*
----
-## 🖼️ Project Card Styles
----
-*/
-
+/* Project cards /
+/ Mobile-first: 1 card per view by default /
 .project-card {
-  width: 100%; /* one per row mobile */
-  padding: 0 15px;
-  box-sizing: border-box;
+flex: 0 0 100%;
+padding: 0 15px;
+box-sizing: border-box;
+transition: transform 0.3s ease, opacity 0.3s ease;
+}
+@media (min-width: 768px) {
+.project-card { flex: 0 0 calc(100% / 2); } / Tablet: 2 cards /
+}
+ */
+
+
+/* IMPORTANT: make cards visible by default (no .visible class required) */
+.project-card-inner {
+background: #fff;
+border-radius: 20px;
+height: 48vh;
+overflow: hidden;
+box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+cursor: pointer;
+transition: transform 0.4s ease, box-shadow 0.4s ease, opacity 0.4s ease;
+opacity: 1;
+transform: translateY(0);
 }
 
-.project-card-inner {
-  background: white;
-  border-radius: 20px;
-  height: 48vh;
-  overflow: hidden;
-  box-shadow: 0 10px 40px rgba(0,0,0,0.08);
-  cursor: pointer;
-  transition: all 0.4s ease;
+/* Keep a subtle entrance when the section becomes active */
+.projects-section.section-active .project-card-inner {
+animation: cardIn 500ms ease both;
+}
+@keyframes cardIn {
+from { opacity: 0; transform: translateY(30px); }
+to { opacity: 1; transform: translateY(0); }
 }
 
 .project-card-inner:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 20px 60px rgba(167,121,247,0.2);
+transform: translateY(-10px);
+box-shadow: 0 20px 60px rgba(167,121,247,0.2);
 }
 
-/*
----
-### Card Image
----
-*/
-
+/* Image */
 .project-card-image {
-  width: 100%;
-  height: 140px;
-  background: linear-gradient(135deg, rgba(167,121,247,0.1), rgba(167,121,247,0.05));
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  overflow: hidden;
+width: 100%;
+height: 140px;
+background: linear-gradient(135deg, rgba(167,121,247,0.1), rgba(167,121,247,0.05));
+display: flex;
+align-items: center;
+justify-content: center;
+position: relative;
+overflow: hidden;
 }
-
 .project-card-image::before {
-  content: '📸';
-  font-size: 64px;
-  opacity: 0.3;
+content: '📸';
+font-size: 64px;
+opacity: 0.3;
 }
-
 .project-card-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  position: absolute;
-  top: 0;
-  left: 0;
+width: 100%;
+height: 100%;
+object-fit: cover;
+position: absolute;
+top: 0;
+left: 0;
 }
 
-/*
----
-### Card Content & Tags
----
-*/
-.project-card-header{
-  display: flex;
-  width: 100%;
-  justify-content: space-between;
+/* Content */
+.project-card-header {
+display: flex;
+width: 100%;
+justify-content: space-between;
 }
+.project-card-header span { height: fit-content; }
 
-.project-card-header span{
-  height: fit-content ;
-}
-.project-card-content {
-  padding: 20px;
-}
-
+.project-card-content { padding: 20px; }
 .project-card-content h3 {
-  font-size: calc(var(--font-base) * 1.5);
-  font-weight: 700;
-  color: var(--color-text-dark);
-  margin-bottom: 10px;
+font-size: calc(var(--font-base) * 1.5);
+font-weight: 700;
+color: var(--color-text-dark);
+margin-bottom: 10px;
 }
-
 .project-card-content p {
-  font-size: var(--font-base);
-  color: var(--color-text-light);
-  line-height: 1.6;
-  margin-bottom: 20px;
+font-size: var(--font-base);
+color: var(--color-text-light);
+line-height: 1.6;
+margin-bottom: 20px;
 }
 
 .project-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
+display: flex;
+flex-wrap: wrap;
+gap: 8px;
 }
-
 .project-tag {
-  padding: 6px 12px;
-  background: rgba(167,121,247,0.1);
-  color: var(--color-primary);
-  border-radius: 6px;
-  font-size: calc(var(--font-base) - 1px);
-  font-weight: 500;
+padding: 6px 12px;
+background: rgba(167,121,247,0.1);
+color: var(--color-primary);
+border-radius: 6px;
+font-size: calc(var(--font-base) - 1px);
+font-weight: 500;
 }
 
-/*
----
-## 🕹️ Carousel Controls (Arrows & Dots)
----
-*/
-
-/* Wrapper for arrows and indicators */
+/* Controls */
 .carousel-controls {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
-  padding: 20px 0 0 0; /* Add top padding to space it from the project cards */
-  width: 100%;
-  max-width: 1200px;
+display: flex;
+justify-content: center;
+align-items: center;
+gap: 20px;
+padding-top: 25px;
+width: 100%;
+max-width: 1200px;
 }
-
-/* Styling for the Previous/Next buttons */
 .carousel-arrow {
-  background: none;
-  border: 1px solid rgba(58, 46, 46, 0.4);
-  color: rgb(21, 19, 19);
-  font-size: 1.5rem;
-  padding: 8px 12px;
-  cursor: pointer;
-  border-radius: 50%;
-  transition: background-color 0.3s ease, border-color 0.3s ease;
-  flex-shrink: 0; /* Prevents button from shrinking */
+background: none;
+border: 1px solid rgba(58, 46, 46, 0.4);
+color: rgb(21, 19, 19);
+font-size: 1.5rem;
+padding: 8px 12px;
+cursor: pointer;
+border-radius: 50%;
+transition: all 0.3s ease;
+flex-shrink: 0;
 }
-
 .carousel-arrow:hover {
-  background-color: rgba(31, 168, 227, 0.815);
-  border-color: rgba(47, 40, 40, 0.8);
+background-color: var(--color-primary);
+color: white;
+border-color: var(--color-primary);
 }
+.carousel-arrow:active { background-color: rgba(255, 255, 255, 0.2); }
 
-.carousel-arrow:active {
-  background-color: rgba(255, 255, 255, 0.2);
-}
-
-/* Container for the dot indicators */
 .carousel-indicators {
-  display: flex;
-  gap: 10px;
-  justify-content: center;
-  align-items: center;
-  margin: 0 20px;
+display: flex;
+gap: 10px;
+justify-content: center;
+align-items: center;
+margin: 0 20px;
 }
-
-/* Styling for the dot indicators */
 .carousel-dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 80%;
-  background-color: rgba(26, 21, 21, 0.3);
-  border: none;
-  padding: 0;
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.3s ease;
-  flex-shrink: 0;
+width: 10px;
+height: 10px;
+border-radius: 50%;
+background-color: rgba(26, 21, 21, 0.3);
+border: none;
+cursor: pointer;
+transition: background-color 0.3s ease, transform 0.3s ease;
 }
-
-.carousel-dot:hover {
-  background-color: rgba(255, 255, 255, 0.6);
-}
-
+.carousel-dot:hover { background-color: rgba(255, 255, 255, 0.6); }
 .carousel-dot.active {
-  background-color: #4CAF50; 
-  pointer-events: none; /* Active dot is not clickable */
+background-color: var(--color-primary);
+transform: scale(1.2);
+pointer-events: none;
 }
 
-/*
----
-## 💡 Section Active/Animation States
----
-*/
-
-/* Initial hidden state */
+/* Active section transitions (fix selector) /
 .projects-section .carousel-header,
 .projects-section .carousel-container,
 .projects-section .carousel-controls {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
+opacity: 0;
+transform: translateY(30px);
+transition: opacity 0.6s ease, transform 0.6s ease;
 }
-
-/* When section is active, fade and slide up */
-.section.projects.active .projects-section .carousel-header {
-  opacity: 1;
-  transform: translateY(0);
-  transition-delay: 0.1s;
+/ Use a class you actually attach to the section: .section-active */
+.projects-section.section-active .carousel-header {
+opacity: 1;
+transform: translateY(0);
+transition-delay: 0.1s;
 }
-
-.section.projects.active .projects-section .carousel-container {
-  opacity: 1;
-  transform: translateY(0);
-  transition-delay: 0.4s;
+.projects-section.section-active .carousel-container {
+opacity: 1;
+transform: translateY(0);
+transition-delay: 0.4s;
 }
-
-.section.projects.active .projects-section .carousel-controls {
-  opacity: 1;
-  transform: translateY(0);
-  transition-delay: 0.7s;
+.projects-section.section-active .carousel-controls {
+opacity: 1;
+transform: translateY(0);
+transition-delay: 0.7s;
 }
-

@@ -278,7 +278,9 @@
 }
 
 .project-actions button {
+  font-size: 0.7rem;
   flex: 1;
+  height: fit-content;
 }
 
 .project-actions button:disabled {
