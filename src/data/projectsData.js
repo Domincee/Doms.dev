@@ -44,7 +44,7 @@ const projects = [
     tools: ['OpenCV', 'Scikit-learn', 'Numpy', 'Pandas'],
     goal: 'Accurately classify banana leaf images (Healthy vs. Diseased vs None-leaf) by extracting color, texture, and shape features.',
     description: 'This project implements a banana leaf health classification system using classical Machine Learning. It processes input images to segment the leaf and extracts detailed features (such as GLCM texture, LBP, HOG, and color statistics). These features are then fed into a K-Nearest Neighbors (KNN) classifier, optimized via iterative search, to determine the leaf’s health status. The system includes data preprocessing, feature normalization, and robust model evaluation using confusion matrices.',
-    liveDemo: '', // Add link if deployed
+    liveDemo: 'https://banana-leaf-detector.onrender.com/', // Add link if deployed
     repo: 'https://github.com/Domincee/Banana-Leaf-Detector'
   },
     {
@@ -62,7 +62,7 @@ const projects = [
       goal: 'Build a user-friendly, responsive tool that quickly condenses large text inputs, saving users time and improving information comprehension.',
       description:
         'The AI Text Summarizer is a modern web utility designed to tackle information overload. Built with React and styled using Tailwind CSS, it connects to an NLP-powered API (via RapidAPI) to generate accurate, concise summaries from any provided text or URL. The goal is to make content digestion faster and more efficient through an intuitive user experience.',
-      liveDemo: '', // Add your deployed link when ready, e.g. 'https://summarizer.domince.com'
+      liveDemo: 'https://summarizer-2-pve4.onrender.com/',
       repo: 'https://github.com/Domincee/Summarizer'
     },
   {
