@@ -172,3 +172,46 @@ footer {
   color: #a779f7;
   margin: 4px;
 }
+
+
+/* DISABLE SELECTABLE TEXT , IMG */
+.hero-section,
+.about-section,
+.projects-section,
+.contact-section,
+.modal-content,
+.project-card,
+.carousel-track,
+.sections,
+.section,
+body {
+-webkit-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none;
+user-select: none;
+-webkit-touch-callout: none; 
+}
+
+/* IMPORTANT: allow selection/focus in form controls and editable areas */
+input,
+textarea,
+select,
+button,
+label,
+.form-group *,
+[contenteditable="true"] {
+-webkit-user-select: text;
+-moz-user-select: text;
+-ms-user-select: text;
+user-select: text;
+-webkit-touch-callout: default;
+}
+
+img {
+-webkit-user-drag: none; /* / Chrome/Safari / */
+ user-drag: none;/*  / non-standard, some browsers ignore / */
+-webkit-touch-callout: none;
+-moz-user-select: none;/*  / extra guard for FF */
+-webkit-user-select: none;
+user-select: none;
+}
