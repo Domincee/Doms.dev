@@ -4,6 +4,7 @@ import '../styles/About.css';
 /* import '../styles/layout.css'; */
 import profileImage from '../assets/bg-images/aboutProfie.png';
 
+
 const AboutSection = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 

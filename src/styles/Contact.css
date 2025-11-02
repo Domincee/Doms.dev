@@ -157,9 +157,9 @@
 
 /* Success and Error variants */
 .form-status.success {
-  background: rgb(255, 255, 255);
-  color: #000000;
-  border: 1px solid #151615;
+  background: rgb(1, 94, 156);
+  color: #fcfcff;
+  border: 1px solid #a4aaff;
 }
 
 .form-status.error {
@@ -168,7 +168,10 @@
   border: 1px solid #fff0ee;
 }
 
-
+.form-error{
+  color: red;
+  font-size: 0.6REM;
+}
 /*
 ------------------------------------
 ### Social Icons
