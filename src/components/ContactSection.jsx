@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import '../styles/Contact.css';
 /* import '../styles/layout.css'; */
+import { supabase } from '../lib/supabaseClient';
 
 const ContactSection = () => {
   const [formData, setFormData] = useState({
@@ -16,20 +17,35 @@ const ContactSection = () => {
       [e.target.name]: e.target.value
     });
   };
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  setStatus('loading');
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setStatus('loading');
+  try {
+    const payload = {
+      name: formData.name.trim(),
+      email: formData.email.trim(),
+      message: formData.message.trim(),
+      user_agent: navigator.userAgent,
+    };
 
-    // Simulate form submission
-    setTimeout(() => {
-      setStatus('success');
-      setFormData({ name: '', email: '', message: '' });
-      
-      // Clear success message after 5 seconds
-      setTimeout(() => setStatus(null), 5000);
-    }, 1500);
-  };
+    // Basic client-side guard (optional)
+    if (!payload.name || !payload.email || !payload.message) {
+      setStatus('error');
+      return;
+    }
+
+    const { error } = await supabase.from('contacts').insert([payload]);
+    if (error) throw error;
+
+    setStatus('success');
+    setFormData({ name: '', email: '', message: '' });
+    setTimeout(() => setStatus(null), 5000);
+  } catch {
+    setStatus('error');
+  }
+};
+
 
   const socialLinks = [
     { icon: '💼', name: 'GitHub', url: '' },
