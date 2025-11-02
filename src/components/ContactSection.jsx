@@ -1,6 +1,5 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import '../styles/Contact.css';
-/* import '../styles/layout.css'; */
 import { supabase } from '../lib/supabaseClient';
 
 const ContactSection = () => {
@@ -17,35 +16,37 @@ const ContactSection = () => {
       [e.target.name]: e.target.value
     });
   };
-const handleSubmit = async (e) => {
-  e.preventDefault();
-  setStatus('loading');
 
-  try {
-    const payload = {
-      name: formData.name.trim(),
-      email: formData.email.trim(),
-      message: formData.message.trim(),
-      user_agent: navigator.userAgent,
-    };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setStatus('loading');
 
-    // Basic client-side guard (optional)
-    if (!payload.name || !payload.email || !payload.message) {
+    try {
+      const payload = {
+        name: formData.name.trim(),
+        email: formData.email.trim(),
+        message: formData.message.trim(),
+        user_agent: navigator.userAgent,
+      };
+
+      if (!payload.name || !payload.email || !payload.message) {
+        setStatus('error');
+        return;
+      }
+
+      const { error } = await supabase.from('contacts').insert([payload]);
+      if (error) throw error;
+
+      setStatus('success');
+      setFormData({ name: '', email: '', message: '' });
+
+      // Hide notification after 4s
+      setTimeout(() => setStatus(null), 4000);
+    } catch {
       setStatus('error');
-      return;
+      setTimeout(() => setStatus(null), 4000);
     }
-
-    const { error } = await supabase.from('contacts').insert([payload]);
-    if (error) throw error;
-
-    setStatus('success');
-    setFormData({ name: '', email: '', message: '' });
-    setTimeout(() => setStatus(null), 5000);
-  } catch {
-    setStatus('error');
-  }
-};
-
+  };
 
   const socialLinks = [
     { icon: '💼', name: 'GitHub', url: '' },
@@ -54,35 +55,42 @@ const handleSubmit = async (e) => {
     { icon: '✈️', name: 'Telegram', url: '' }
   ];
 
- 
   return (
     <div className="contact-section">
+      {/* ✅ Floating top notification */}
+      <div
+        className={`form-status ${
+          status === 'success' ? 'success show' : status === 'error' ? 'error show' : ''
+        }`}
+      >
+        {status === 'success' && '✓ Message sent successfully! I’ll get back to you soon.'}
+        {status === 'error' && '✗ Something went wrong. Please try again.'}
+      </div>
+
       <div className="contact-container">
         <div className="contact-header">
           <div className="msgget">
-               <h2>Get In Touch</h2>
-                <p>Have a project in mind? Let's work together!</p>
+            <h2>Get In Touch</h2>
+            <p>Have a project in mind? Let's work together!</p>
           </div>
-       
-           <div className="contact-social">
-          <h3>Connect With Me</h3>
-          <div className="social-icons">
-            {socialLinks.map((social, index) => (
-              <a
-                key={index}
-                href={social.url || '#'}
-                className="social-icon"
-                aria-label={social.name}
-                target={social.url ? '_blank' : undefined}
-                rel={social.url ? 'noopener noreferrer' : undefined}
-              >
-                {social.icon}
-              </a>
-            ))}
-          </div>
-        </div>
-        
 
+          <div className="contact-social">
+            <h3>Connect With Me</h3>
+            <div className="social-icons">
+              {socialLinks.map((social, index) => (
+                <a
+                  key={index}
+                  href={social.url || '#'}
+                  className="social-icon"
+                  aria-label={social.name}
+                  target={social.url ? '_blank' : undefined}
+                  rel={social.url ? 'noopener noreferrer' : undefined}
+                >
+                  {social.icon}
+                </a>
+              ))}
+            </div>
+          </div>
         </div>
 
         <form className="contact-form" onSubmit={handleSubmit}>
@@ -95,7 +103,6 @@ const handleSubmit = async (e) => {
               value={formData.name}
               onChange={handleChange}
               required
-              aria-required="true"
               placeholder="Your name"
             />
           </div>
@@ -109,7 +116,6 @@ const handleSubmit = async (e) => {
               value={formData.email}
               onChange={handleChange}
               required
-              aria-required="true"
               placeholder="your.email@example.com"
             />
           </div>
@@ -122,33 +128,18 @@ const handleSubmit = async (e) => {
               value={formData.message}
               onChange={handleChange}
               required
-              aria-required="true"
               placeholder="Tell me about your project..."
             />
           </div>
 
-          <button 
-            type="submit" 
+          <button
+            type="submit"
             className="button-primary form-submit"
             disabled={status === 'loading'}
           >
             {status === 'loading' ? 'Sending...' : 'Send Message'}
           </button>
-
-          {status === 'success' && (
-            <div className="form-status success">
-              ✓ Message sent successfully! I'll get back to you soon.
-            </div>
-          )}
-
-          {status === 'error' && (
-            <div className="form-status error">
-              ✗ Something went wrong. Please try again.
-            </div>
-          )}
         </form>
-
-
       </div>
     </div>
   );

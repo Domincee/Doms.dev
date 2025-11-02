@@ -133,24 +133,41 @@
   min-height: clamp(100px, 10vh, 140px);
   resize: vertical;
 }
-
 .form-status {
-  margin-top: 20px;
-  padding: 15px;
-  border-radius: 10px;
-  font-size: var(--fs-small);
+  position: fixed;
+  top: -60px; /* Start hidden above the screen */
+  left: 50%;
+  transform: translateX(-50%);
+  min-width: 250px;
+  padding: 10px 20px;
+  border-radius: 8px;
   text-align: center;
+  font-weight: 500;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  transition: all 0.5s ease; /* smooth fade + slide */
+  z-index: 9999;
 }
 
+/* Visible state */
+.form-status.show {
+  top: 70px; /* Slides down smoothly */
+  opacity: 1;
+}
+
+/* Success and Error variants */
 .form-status.success {
-  background: rgba(46, 204, 113, 0.1);
-  color: #2ecc71;
+  background: rgb(255, 255, 255);
+  color: #000000;
+  border: 1px solid #151615;
 }
 
 .form-status.error {
-  background: rgba(231, 76, 60, 0.1);
-  color: #e74c3c;
+  background: rgb(0, 0, 0);
+  color: #fffbfa;
+  border: 1px solid #fff0ee;
 }
+
 
 /*
 ------------------------------------
