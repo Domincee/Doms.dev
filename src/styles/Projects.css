@@ -159,7 +159,8 @@ display: flex;
 width: 100%;
 justify-content: space-between;
 }
-.project-card-header span { height: fit-content; }
+.project-card-header span {
+  font-size: 0.7rem; height: fit-content; }
 
 .project-card-content {
 flex: 0 0 auto; /* fits to its content */
@@ -169,7 +170,7 @@ max-height: 50%;
 
 .project-card-content h3 {
 
-font-size: calc(var(--font-base) * 1.2);
+font-size: calc(var(--font-base) * 1);
 font-weight: 700;
 color: var(--color-text-dark);
 margin-bottom: 10px;

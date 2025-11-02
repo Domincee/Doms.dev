@@ -48,7 +48,23 @@ const ContactSection = () => {
                 <p>Have a project in mind? Let's work together!</p>
           </div>
        
-
+           <div className="contact-social">
+          <h3>Connect With Me</h3>
+          <div className="social-icons">
+            {socialLinks.map((social, index) => (
+              <a
+                key={index}
+                href={social.url || '#'}
+                className="social-icon"
+                aria-label={social.name}
+                target={social.url ? '_blank' : undefined}
+                rel={social.url ? 'noopener noreferrer' : undefined}
+              >
+                {social.icon}
+              </a>
+            ))}
+          </div>
+        </div>
         
 
         </div>
@@ -117,23 +133,6 @@ const ContactSection = () => {
         </form>
 
 
-            <div className="contact-social">
-          <h3>Connect With Me</h3>
-          <div className="social-icons">
-            {socialLinks.map((social, index) => (
-              <a
-                key={index}
-                href={social.url || '#'}
-                className="social-icon"
-                aria-label={social.name}
-                target={social.url ? '_blank' : undefined}
-                rel={social.url ? 'noopener noreferrer' : undefined}
-              >
-                {social.icon}
-              </a>
-            ))}
-          </div>
-        </div>
       </div>
     </div>
   );

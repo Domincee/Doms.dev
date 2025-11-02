@@ -162,12 +162,12 @@
   min-width: 200px;
   
   max-width: 300px;
-  text-align: center;
+  text-align: start;
   margin: auto 0;
 }
 
 .contact-social h3 {
-  font-size: var(--fs-subheading);
+  font-size: calc( var(--fs-subheading) - 5px);
   font-weight: 600;
   color: #111;
   margin-bottom: 15px;
@@ -175,20 +175,20 @@
 
 .social-icons {
   display: flex;
-  justify-content: center;
+  justify-content: start;
   gap: clamp(10px, 3vw, 20px);
 }
 
 .social-icon {
-  width: clamp(30px, 6vw, 50px);
-  height: clamp(30px, 6vw, 50px);
+  width: clamp(20px, 6vw, 24px);
+  height: clamp(20px, 6vw, 24px);
   border-radius: 50%;
   background: rgba(167, 121, 247, 0.1);
   display: flex;
   align-items: center;
   justify-content: center;
   color: #a779f7;
-  font-size: var(--fs-icon);
+  font-size: calc(var(--fs-icon) - 5px);
   transition: all 0.3s ease;
 }
 
@@ -224,8 +224,8 @@
   }
 
   .contact-social {
-    margin-top: 1rem;
-  }
+    display: none;
+  }    
 }
 
 @media (max-height: 650px) {

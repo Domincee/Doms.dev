@@ -8,10 +8,9 @@ import linkedIn from '../assets/footer-icons/linkedIn.svg';
 
 const Footer = () => {
   const socialLinks = [
-    { icon: github, name: 'GitHub', url: 'https://github.com/daseberos07-dev' },
-    { icon: tg, name: 'Telegram', url: 'https://t.me/yourusername' },
-    { icon: gmail, name: 'Gmail', url: 'mailto:your.email@gmail.com' },
-    { icon: linkedIn, name: 'LinkedIn', url: 'https://www.linkedin.com/in/yourusername' }
+    { icon: github, name: 'GitHub', url: 'https://github.com/Domincee' },
+    { icon: gmail, name: 'Gmail', url: 'mailto:daseberos.email@gmail.com' },
+    { icon: linkedIn, name: 'LinkedIn', url: 'https://www.linkedin.com/in/domince-aseberos-74a6682b8' }
   ];
 
   return (
