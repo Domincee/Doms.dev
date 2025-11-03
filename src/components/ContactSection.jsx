@@ -2,6 +2,9 @@ import { useState, useEffect } from 'react';
 import '../styles/Contact.css';
 import { supabase } from '../lib/supabaseClient';
 
+import socialLinks from '../data/socialLinks';
+
+
 const NAME_REGEX = /^[A-Za-z\u00C0-\u00FF'\s-]{2,120}$/; // letters+accents, spaces, apostrophes, hyphens
 const EMAIL_REGEX = /^[^\s@]{4,64}@[^\s@]+.[^\s@]{2,}$/;
 
@@ -104,15 +107,35 @@ const ContactSection = () => {
         {statusMsg}
       </div>
 
-      <div className="contact-container">
+      <div className="contact-container"> 
         <div className="contact-header">
           <div className="msgget">
             <h2>Get In Touch</h2>
             <p>Have a project in mind? Let's work together!</p>
           </div>
+
+            
+                 <div className="social-links-1">
+              {socialLinks.map((icon, index) => (
+                <a
+                  key={index}
+                  href={icon.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="transition-transform duration-200 hover:scale-110"
+                >
+                  <img
+                    src={icon.src}
+                    alt={icon.alt}
+                    className="w-6 h-6 cursor-pointer"
+                  />
+                </a>
+              ))}
+          </div>
           {/* socials omitted for brevity */}
         </div>
-
+        
+          
         <form className="contact-form" onSubmit={handleSubmit}>
           <div className="form-group">
             <label htmlFor="name">Name</label>
@@ -152,10 +175,29 @@ const ContactSection = () => {
             />
           </div>
 
+              
           <button type="submit" className="button-primary form-submit" disabled={status === 'loading'}>
             {status === 'loading' ? 'Sending...' : 'Send Message'}
           </button>
         </form>
+         <div className="social-links-2">
+              {socialLinks.map((icon, index) => (
+                <a
+                  key={index}
+                  href={icon.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="icon-link"
+                >
+                  <img
+                    src={icon.src}
+                    alt={icon.alt}
+                    className="icon-1"
+                  />
+                </a>
+              ))}
+          </div>
+
       </div>
     </div>
   );
