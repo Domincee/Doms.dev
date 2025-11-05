@@ -15,7 +15,7 @@ return (
 <header>
 <nav className="navbar">
 <a href="#home" className="navbar-logo" onClick={(e) => { e.preventDefault(); handleClick('home'); }}>
-Doms.dev
+  <img src="/logo.png" alt="Doms.dev" className="navbar-logo-img" />
 </a>
           <div 
       className={`navbar-hamburger ${isOpen ? 'open' : ''}`}
