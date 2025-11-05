@@ -2,6 +2,7 @@ import bananaLeafHero from '../assets/bg-images/bananaLeaf.svg';
 import myGoal from '../assets/bg-images/myGoal.svg';
 import howIsIt from '../assets/bg-images/howIsIt.svg';
 import summarizer from '../assets/bg-images/summarizer.jpg';
+import Templx from '../assets/project-imgs/project3/1.png';
 
 
 const project1Images = import.meta.glob(
@@ -10,6 +11,11 @@ const project1Images = import.meta.glob(
 );
 const project2Images = import.meta.glob(
   '../assets/project-imgs/project2/*.{png,jpg,jpeg,webp}',
+  { eager: true }
+);
+
+const project3Images = import.meta.glob(
+  '../assets/project-imgs/project3/*.{png,jpg,jpeg,webp}',
   { eager: true }
 );
 
@@ -26,6 +32,15 @@ const images2 = Object.values(project2Images)
     const numB = parseInt(b.match(/\d+/)?.[0] || 0, 10);
     return numA - numB; // ascending numeric order
   });
+
+const images3 = Object.values(project3Images)
+  .map((mod) => mod?.default || mod)
+  .sort((a, b) => {
+    const numA = parseInt(a.match(/\d+/)?.[0] || 0, 10);
+    const numB = parseInt(b.match(/\d+/)?.[0] || 0, 10);
+    return numA - numB; // ascending numeric order
+  });
+
 
 /* console.log(images2);  */
 const projects = [
@@ -66,57 +81,21 @@ const projects = [
       repo: 'https://github.com/Domincee/Summarizer'
     },
   {
-    id: 'project-3',
-    title: 'Portfolio Template',
-    shortDescription: 'Customizable developer portfolio',
-    image: howIsIt,
-    status: 'maintenance',
-    tags: ['React', 'Vite', 'Responsive'],
-    tools: ['React', 'Vite', 'CSS', 'GitHub Pages'],
-    goal: 'Create a reusable, customizable portfolio template for developers.',
-    description: 'A fully responsive portfolio template designed for developers. Includes sections for projects, skills, experience, and contact information. Easy to customize with a simple data structure and clean component architecture.',
-    liveDemo: '',
-    repo: ''
+  id: 'project-3',
+  title: 'Templyx',
+  shortDescription: 'Inspirational developer portfolio platform with community features',
+  image: Templx,
+  images: images3,
+
+  status: 'ongoing',
+  tags: ['React', 'Vite', 'Supabase', 'Authentication', 'Real-time'],
+  tools: ['React', 'Vite', 'CSS', 'Supabase', 'GitHub Pages'],
+  goal: 'Create an inspirational portfolio template for developers to showcase their work creatively.',
+  description: 'A modern portfolio platform for developers featuring user authentication, real-time notifications, project publishing and browsing, community interactions with reactions, and detailed profile pages. Built with React, Vite, and Supabase for a seamless and interactive developer experience.',
+  liveDemo: 'https://templyx.vercel.app/',
+  repo: 'https://github.com/Domincee/Templyx'
   },
-  {
-    id: 'project-4',
-    title: 'E-Commerce Platform',
-    shortDescription: 'Modern online shopping experience',
-    image: howIsIt,
-    status: 'completed',
-    tags: ['React', 'Redux', 'API'],
-    tools: ['React', 'Redux', 'REST API', 'Stripe'],
-    goal: 'Build a scalable e-commerce platform with seamless checkout.',
-    description: 'A full-featured e-commerce platform with product browsing, cart management, secure checkout, and order tracking. Integrated with Stripe for payment processing and includes an admin dashboard for inventory management.',
-    liveDemo: '',
-    repo: ''
-  },
-  {
-    id: 'project-5',
-    title: 'Fitness Tracker',
-    shortDescription: 'Track workouts and progress',
-    image: howIsIt,
-    status: 'ongoing',
-    tags: ['React', 'Charts', 'Mobile'],
-    tools: ['React', 'Chart.js', 'LocalStorage'],
-    goal: 'Help users track fitness goals and visualize progress over time.',
-    description: 'A fitness tracking application that allows users to log workouts, set goals, and visualize progress through interactive charts. Features workout history, calorie tracking, and customizable exercise routines.',
-    liveDemo: '',
-    repo: ''
-  },
-  {
-    id: 'project-6',
-    title: 'Recipe Finder',
-    shortDescription: 'Discover and save recipes',
-    image: howIsIt,
-    status: 'completed',
-    tags: ['React', 'API', 'Search'],
-    tools: ['React', 'Recipe API', 'CSS Grid'],
-    goal: 'Create an intuitive recipe discovery platform with advanced search.',
-    description: 'A recipe discovery platform that integrates with recipe APIs to provide search, filtering by ingredients and dietary restrictions, and the ability to save favorite recipes. Features detailed cooking instructions and nutritional information.',
-    liveDemo: '',
-    repo: ''
-  }
+  
 ];
 
 export default projects;

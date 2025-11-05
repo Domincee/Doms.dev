@@ -8,8 +8,8 @@
   z-index: 2000;
   display: flex;
   justify-content: center;
-  align-items: flex-start;
-    backdrop-filter: blur(8px); 
+  align-items: center;
+    backdrop-filter: blur(8px);
   overflow-y: auto;
   padding: 40px 20px calc(40px + env(safe-area-inset-bottom));
   opacity: 0;
@@ -23,7 +23,7 @@
 .project-detail-panel {
   background: white;
   border-radius: 20px;
-  max-width: 900px;
+  max-width: 1200px;
   width: 100%;
   border-bottom: 2px solid #00000061;
   box-shadow: 0 15px 15px #00000028;
@@ -32,7 +32,7 @@
   margin: 24px auto;
   position: relative;
   z-index: 2001;
-  max-height: calc(100vh - (var(--nav-height, 80px) + var(--footer-height, 80px) + 80px));
+  max-height: calc(100vh - (var(--nav-height, 20px) + var( 80px) + 80px));
   overflow: auto;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: thin;
@@ -104,7 +104,6 @@
 /* Image section */
 .project-detail-image {
   width: 100%;
-  height: 400px;
   background: linear-gradient(135deg, rgba(167, 121, 247, 0.2), rgba(167, 121, 247, 0.05));
   display: flex;
   align-items: center;
@@ -116,10 +115,11 @@
 
 .image-container {
   width: 100%;
-  height: 100%;
+  height: 80%;
   position: relative;
   display: flex;
   align-items: center;
+  box-shadow: 0 25px 25px #00000010;
   justify-content: center;
 }
 
@@ -159,6 +159,14 @@
 
 .image-nav.next {
   right: 20px;
+}
+
+.image-nav.next.disabled {
+  display: none;
+}
+
+.image-nav.prev.disabled {
+  display: none;
 }
 
 /* Image indicators */
@@ -404,18 +412,21 @@
     overflow-y: auto;
     margin: 0; /* Remove existing margin that interferes with centering */
     border-radius: 24px;
-  height: min(70vh, calc(100vh - var(--footer-height) - 20px));
+    height: min(70vh, calc(100vh - var(--footer-height) - 20px));
 
     /* Set initial state for animation (off-screen) */
     transform: translate(-50%, -50%) scale(0.9); /* Start slightly smaller/off-center */
     opacity: 0;
     transition: transform 0.5s ease, opacity 0.5s ease;
   }
-  
+     .project-detail-image {
+        height: 650px;
+     }
   /* 3. Correct the Open State Animation: */
   .project-detail-overlay.open .project-detail-panel {
     /* The combination of top/left 50% and translate(-50%, -50%) is the classic perfect center hack */
     transform: translate(-50%, -50%) scale(1); 
+    height: 480px;
     opacity: 1;
     /* OVERRIDE the conflicting animation property from the main CSS */
     animation: none; 
@@ -427,7 +438,7 @@
   }
 
   .project-detail-image {
-    height: 450px;
+    height: 420px;
   }
   
   /* ... (Keep Font Clamp Styles) ... */

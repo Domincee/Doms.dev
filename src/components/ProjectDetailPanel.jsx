@@ -11,17 +11,17 @@ const ProjectDetailPanel = ({ project, isOpen, onClose }) => {
   const minSwipeDistance = 50;
 
   const handleNext = () => {
-    setDirection('next');
-    setCurrentImageIndex((prevIndex) => 
-      prevIndex === project.images?.length - 1 ? 0 : prevIndex + 1
-    );
+    if (currentImageIndex < (project.images?.length || 0) - 1) {
+      setDirection('next');
+      setCurrentImageIndex((prevIndex) => prevIndex + 1);
+    }
   };
 
   const handlePrev = () => {
-    setDirection('prev');
-    setCurrentImageIndex((prevIndex) => 
-      prevIndex === 0 ? (project.images?.length || 1) - 1 : prevIndex - 1
-    );
+    if (currentImageIndex > 0) {
+      setDirection('prev');
+      setCurrentImageIndex((prevIndex) => prevIndex - 1);
+    }
   };
 
   const handleTouchStart = (e) => {
@@ -117,15 +117,15 @@ const ProjectDetailPanel = ({ project, isOpen, onClose }) => {
 
               {project.images.length > 1 && (
                 <>
-                  <button 
-                    className="image-nav prev" 
+                  <button
+                    className={`image-nav prev ${currentImageIndex === 0 ? 'disabled' : ''}`}
                     onClick={handlePrev}
                     aria-label="Previous image"
                   >
                     ‹
                   </button>
-                  <button 
-                    className="image-nav next" 
+                  <button
+                    className={`image-nav next ${currentImageIndex === project.images.length - 1 ? 'disabled' : ''}`}
                     onClick={handleNext}
                     aria-label="Next image"
                   >
