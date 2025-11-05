@@ -4,7 +4,7 @@ import '../styles/Navbar.css';
 const Navbar = ({ activeSection, onNavigate }) => {
 const [isOpen, setIsOpen] = useState(false);
 
-const sections = ['hero', 'about', 'projects', 'contact'];
+const sections = ['home', 'about', 'projects', 'contact'];
 
 const handleClick = (section) => {
 window.dispatchEvent(new CustomEvent('app:close-modals'));
@@ -14,7 +14,7 @@ setIsOpen(false);
 return (
 <header>
 <nav className="navbar">
-<a href="#hero" className="navbar-logo" onClick={(e) => { e.preventDefault(); handleClick('hero'); }}>
+<a href="#home" className="navbar-logo" onClick={(e) => { e.preventDefault(); handleClick('home'); }}>
 Doms.dev
 </a>
           <div 

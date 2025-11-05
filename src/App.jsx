@@ -10,10 +10,10 @@ import { getScrollSensitivity } from './utils/scrollConfig';
 import './styles/globals.css';
 
 function App() {
-  const [activeSection, setActiveSection] = useState('hero');
+  const [activeSection, setActiveSection] = useState('home');
   const [isScrolling, setIsScrolling] = useState(false);
   const touchStartY = useRef(0);
-  const sections = ['hero', 'about', 'projects', 'contact'];
+  const sections = ['home', 'about', 'projects', 'contact'];
 
   const wrapIndex = (n) => (n + sections.length) % sections.length;
 
@@ -135,7 +135,7 @@ function App() {
 
       <main>
         <div className="sections">
-          <section className={`section hero ${activeSection === 'hero' ? 'active' : ''}`}>
+          <section className={`section home ${activeSection === 'home' ? 'active' : ''}`}>
             <HeroPlaceholder setActiveSection={setActiveSection} />
           </section>
 

@@ -263,42 +263,42 @@
 }
 
 /* --- When section is active --- */
-.section.hero.active .name-box {
+.section.home.active .name-box {
   opacity: 1;
   transform: translateY(0);
   transition-delay: 0.2s;
 }
 
-.section.hero.active .hero-profile {
+.section.home.active .hero-profile {
   opacity: 1;
   transform: translateY(0);
   transition-delay: 0.4s;
 }
 
-.section.hero.active p {
+.section.home.active p {
   opacity: 1;
   transform: translateY(0);
   transition-delay: 0.6s;
 }
 
-.section.hero.active .roles {
+.section.home.active .roles {
   opacity: 1;
   transform: translateY(0);
   transition-delay: 0.8s;
 }
 
-.section.hero.active .btn {
+.section.home.active .btn {
   opacity: 1;
   transform: translateY(0);
   transition-delay: 1s;
 }
 
 /* Optional: smoother fade out when inactive */
-.section.hero:not(.active) .name-box,
-.section.hero:not(.active) .hero-profile,
-.section.hero:not(.active) p,
-.section.hero:not(.active) .roles,
-.section.hero:not(.active) .btn {
+.section.home:not(.active) .name-box,
+.section.home:not(.active) .hero-profile,
+.section.home:not(.active) p,
+.section.home:not(.active) .roles,
+.section.home:not(.active) .btn {
   opacity: 0;
   transform: translateY(30px);
   transition: opacity 0.4s ease, transform 0.4s ease;
